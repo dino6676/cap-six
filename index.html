@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cap Six — plan de rattrapage PrEP</title>
+<meta name="description" content="Cap Six : plan de rattrapage et suivi de progression pour viser 6/6 aux examens blancs PrEP.">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Cap Six">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;--panel:#ffffff;--panel2:#f4f5f8;--line:#e7e9ee;--ink:#111318;--mute:#6b7080;--dim:#a6abb7;
+  --M:#2f6bff;--F:#e5483a;--H:#d99a0b;--G:#12a46b;--A:#8a4fe0;--S:#111318;--R:#7c8293;
+  --ok:#12a46b;--warn:#d99a0b;--bad:#e5483a;--glow:0 1px 2px rgba(16,24,40,.04),0 6px 20px rgba(16,24,40,.06);
+  --r:14px;--side:#fafbfc;
+}
+body.dark{--bg:#0c0d11;--panel:#14161c;--panel2:#1b1e26;--line:#262a34;--ink:#ecedf2;--mute:#8b90a0;--dim:#5d6272;--M:#5b8cff;--F:#ff6b5b;--H:#f5b83d;--G:#3ecf8e;--A:#b07cff;--S:#e8e8ee;--side:#14161c;--glow:0 0 0 1px rgba(255,255,255,.06),0 10px 30px rgba(0,0,0,.35)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font:14px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding:env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left)}
+button{font:inherit;color:inherit}
+.app{display:grid;grid-template-columns:232px 1fr;min-height:100vh}
+aside{background:var(--side);border-right:1px solid var(--line);padding:18px 12px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:4px}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 10px 16px}
+.logo{width:34px;height:34px;border-radius:10px;background:conic-gradient(var(--M),var(--A),var(--F),var(--H),var(--G),var(--M));display:grid;place-items:center}
+.logo i{width:26px;height:26px;border-radius:8px;background:var(--side);display:grid;place-items:center;font:800 15px Fraunces,serif;font-style:normal}
+.brand b{display:block;font-size:14px}.brand small{color:var(--mute);font-size:11px}
+.nav{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;border:0;background:none;cursor:pointer;text-align:left;color:var(--mute);font-weight:600;width:100%}
+.nav:hover{background:var(--panel2);color:var(--ink)}
+.nav.on{background:var(--panel);color:var(--ink);box-shadow:inset 3px 0 0 var(--ink),var(--glow)}
+.nav svg{width:17px;height:17px;flex:none}
+.nav kbd{margin-left:auto}
+kbd{font:500 10px "JetBrains Mono",monospace;color:var(--dim);border:1px solid var(--line);border-radius:5px;padding:1px 5px}
+.side-foot{margin-top:auto;display:flex;flex-direction:column;gap:8px;padding:10px}
+.sync{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mute)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--dim)}
+.dot.on{background:var(--ok);box-shadow:0 0 8px var(--ok)}.dot.busy{background:var(--warn)}
+.ghost{border:1px solid var(--line);background:none;border-radius:9px;padding:7px 10px;cursor:pointer;font-weight:600;font-size:12px;color:var(--mute)}
+.ghost:hover{color:var(--ink);border-color:var(--dim)}
+main{padding:22px 28px 80px;max-width:1240px;width:100%}
+.top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.top h1{font-family:Fraunces,serif;font-weight:800;font-size:30px;margin:0;letter-spacing:-.01em}
+.top p{margin:2px 0 0;color:var(--mute)}
+.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--panel);border-radius:99px;padding:6px 12px;font-weight:600;font-size:12px}
+.view{display:none;animation:fade .25s ease}.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--glow)}
+.pad{padding:16px 18px}
+.grid{display:grid;gap:14px}
+.hero{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:14px;margin-bottom:16px}
+.kpi{padding:16px 18px;display:flex;align-items:center;gap:14px}
+.kpi b{font:800 26px Fraunces,serif;display:block;line-height:1}
+.kpi span{color:var(--mute);font-size:12px}
+.nowcard{padding:16px 18px;position:relative;overflow:hidden}
+.nowcard .lab{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.nowcard h3{margin:6px 0 4px;font-size:17px}
+.nowcard .meta{color:var(--mute);font-size:12px}
+.nowcard .bar{margin-top:10px}
+.btn{border:0;border-radius:10px;padding:9px 14px;font-weight:700;cursor:pointer;background:var(--ink);color:var(--bg);display:inline-flex;align-items:center;gap:8px}
+.btn.sm{padding:6px 10px;font-size:12px;border-radius:8px}
+.btn.sec{background:var(--panel2);color:var(--ink);border:1px solid var(--line)}
+.bar{height:6px;background:var(--panel2);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:6px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.ring{flex:none}
+.ring circle{transition:stroke-dashoffset .6s cubic-bezier(.2,.8,.2,1)}
+.daynav{display:flex;align-items:center;gap:6px}
+.iconbtn{width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:var(--panel);cursor:pointer;display:grid;place-items:center}
+.iconbtn:hover{border-color:var(--dim)}
+.layout2{display:grid;grid-template-columns:1fr 300px;gap:16px;align-items:start}
+.timeline{position:relative}
+.blk{display:grid;grid-template-columns:92px 1fr;gap:12px;position:relative}
+.blk .t{font:500 12px "JetBrains Mono",monospace;color:var(--mute);padding-top:15px;text-align:right}
+.bcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;margin:5px 0;display:grid;grid-template-columns:4px 1fr auto;overflow:hidden;transition:transform .15s,border-color .15s,opacity .2s}
+.bcard:hover{border-color:var(--dim)}
+.bcard .rail{background:var(--c)}
+.bbody{padding:11px 14px;cursor:pointer;min-width:0}
+.btitle{font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.bsub{color:var(--mute);font-size:12px;margin-top:2px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tchip{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:6px;background:color-mix(in srgb,var(--c) 18%,transparent);color:var(--c)}
+.type{font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+.bact{display:flex;align-items:center;gap:6px;padding:0 12px}
+.steps{display:none;margin:10px 0 2px;padding:0;list-style:none}
+.bcard.open .steps{display:block}
+.steps li{display:flex;gap:9px;align-items:flex-start;padding:4px 0;font-size:13px;color:var(--ink)}
+.steps li.done span{color:var(--dim);text-decoration:line-through}
+.mini{appearance:none;width:15px;height:15px;border:1.5px solid var(--dim);border-radius:4px;flex:none;margin-top:2px;cursor:pointer;display:grid;place-items:center}
+.mini:checked{background:var(--c,var(--ink));border-color:var(--c,var(--ink))}
+.mini:checked::after{content:"";width:7px;height:4px;border:2px solid #fff;border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+.chk{appearance:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--dim);cursor:pointer;display:grid;place-items:center;transition:all .2s;flex:none}
+.chk:hover{border-color:var(--c)}
+.chk:checked{background:var(--c);border-color:var(--c);animation:pop .35s cubic-bezier(.3,1.6,.5,1)}
+.chk:checked::after{content:"";width:10px;height:5px;border:2.5px solid #fff;border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+@keyframes pop{0%{transform:scale(.6)}100%{transform:scale(1)}}
+.bcard.done{opacity:.55}.bcard.done .btitle{text-decoration:line-through;text-decoration-color:var(--dim)}
+.bcard.now{border-color:var(--c);box-shadow:0 0 0 1px var(--c),0 0 24px color-mix(in srgb,var(--c) 30%,transparent)}
+.bcard.exam{background:linear-gradient(90deg,color-mix(in srgb,var(--F) 10%,var(--panel)),var(--panel))}
+.fixed{display:grid;grid-template-columns:92px 1fr;gap:12px}
+.fixed .t{font:500 12px "JetBrains Mono",monospace;color:var(--dim);text-align:right;padding-top:7px}
+.fixed .f{color:var(--dim);font-size:12px;padding:6px 12px;border-left:2px dashed var(--line);margin-left:2px}
+.nowline{position:relative;height:0;margin:2px 0 2px 104px;border-top:2px solid var(--F)}
+.nowline::before{content:"maintenant";position:absolute;left:-92px;top:-9px;font:700 10px Inter;color:var(--F);text-transform:uppercase;letter-spacing:.06em}
+.side .card{margin-bottom:14px}
+.side h4{margin:0 0 10px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+textarea{width:100%;min-height:110px;resize:vertical;border:1px solid var(--line);border-radius:10px;background:var(--panel2);color:var(--ink);padding:10px;font:13px/1.5 Inter}
+.subjrow{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:13px}
+.subjrow .sw{width:9px;height:9px;border-radius:3px;background:var(--c)}
+.subjrow .v{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--mute)}
+.weekbar{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:12px}
+.wpill{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:8px 12px;cursor:pointer;white-space:nowrap;text-align:left}
+.wpill b{display:block;font-size:12px}.wpill span{font-size:11px;color:var(--mute)}
+.wpill.on{background:var(--ink);color:var(--bg)}.wpill.on span{color:var(--bg);opacity:.7}
+.week{display:grid;grid-template-columns:repeat(7,minmax(150px,1fr));gap:10px;overflow-x:auto}
+.wcol{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;min-height:200px}
+.wcol.today{border-color:var(--ink)}
+.wcol.out{opacity:.35}
+.whead{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;cursor:pointer}
+.whead b{font-size:13px}.whead span{font-size:11px;color:var(--mute)}
+.wchip{display:flex;gap:7px;align-items:flex-start;padding:6px 7px;border-radius:8px;background:var(--panel2);margin-bottom:5px;font-size:11.5px;line-height:1.35;cursor:pointer;border-left:3px solid var(--c)}
+.wchip:hover{filter:brightness(1.15)}
+.wchip.done{opacity:.45;text-decoration:line-through}
+.wchip .mini{margin-top:0;width:13px;height:13px}
+.months{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
+.month h3{margin:0 0 10px;font-family:Fraunces,serif}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cal .dh{font-size:10px;color:var(--dim);text-align:center;font-weight:700}
+.cell{aspect-ratio:1;border-radius:8px;background:var(--panel2);position:relative;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;padding:5px;font-size:11px;font-weight:600;border:1px solid transparent;transition:transform .12s}
+.cell:hover{transform:scale(1.06);border-color:var(--dim)}
+.cell.none{background:transparent;cursor:default;color:var(--dim)}
+.cell.none:hover{transform:none;border-color:transparent}
+.cell.today{border-color:var(--ink)}
+.cell .dl{display:flex;gap:2px}
+.cell .dl i{width:5px;height:5px;border-radius:50%;background:var(--c)}
+.subjgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px}
+.sh{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.sh h3{margin:0;font-size:17px}.sh span{color:var(--mute);font-size:12px}
+.secT{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin:14px 0 6px}
+.it{display:flex;gap:10px;align-items:flex-start;padding:5px 6px;border-radius:7px;cursor:pointer;font-size:13px}
+.it:hover{background:var(--panel2)}
+.it.done span{color:var(--dim);text-decoration:line-through}
+.reads{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:14px}
+.rd .top2{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.rd h3{margin:0;font-size:15px}
+.rd .st{font-size:11px;font-weight:800;padding:3px 8px;border-radius:99px;white-space:nowrap}
+.st.ok{background:color-mix(in srgb,var(--ok) 18%,transparent);color:var(--ok)}
+.st.late{background:color-mix(in srgb,var(--bad) 18%,transparent);color:var(--bad)}
+.st.ahead{background:color-mix(in srgb,var(--M) 18%,transparent);color:var(--M)}
+.rd .nums{display:flex;gap:16px;margin:12px 0 8px;font-size:12px;color:var(--mute)}
+.rd .nums b{display:block;font:800 20px Fraunces,serif;color:var(--ink)}
+.rd input[type=range]{width:100%;accent-color:var(--c)}
+.rd .ctrl{display:flex;gap:6px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.rd .ctrl input[type=number]{width:72px;background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:5px 8px;font:600 13px Inter}
+.track{position:relative;height:10px;background:var(--panel2);border-radius:6px;margin-top:6px}
+.track i{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:var(--c)}
+.track em{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);border-radius:2px}
+.ms{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}
+.ms span{font-size:10.5px;padding:2px 7px;border-radius:6px;background:var(--panel2);color:var(--mute)}
+.ms span.past{color:var(--dim);text-decoration:line-through}
+.dline{display:grid;grid-template-columns:110px 70px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
+.dline:last-child{border:0}
+.dline .when{font-weight:700;font-size:13px}
+.dline .j{font:700 12px "JetBrains Mono",monospace;text-align:center;padding:4px 0;border-radius:8px;background:var(--panel2)}
+.dline .j.soon{background:color-mix(in srgb,var(--bad) 20%,transparent);color:var(--bad)}
+.dline.past{opacity:.45}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px}
+.chart{width:100%;height:auto}
+.acc{border-bottom:1px solid var(--line)}
+.acc summary{cursor:pointer;list-style:none;padding:14px 18px;font-weight:700;display:flex;align-items:center;gap:10px}
+.acc summary::after{content:"+";margin-left:auto;color:var(--mute);font-size:18px}
+.acc[open] summary::after{content:"–"}
+.acc .in{padding:0 18px 16px;color:var(--ink)}
+.acc .in p,.acc .in li{margin:5px 0}
+.note{border:1px solid color-mix(in srgb,var(--warn) 40%,transparent);background:color-mix(in srgb,var(--warn) 8%,var(--panel));border-radius:12px;padding:12px 16px;font-size:13px;margin-bottom:14px}
+/* Focus */
+#focus{position:fixed;inset:0;z-index:50;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;color:var(--ink)}
+#focus.on{display:flex;animation:fade .3s}
+.fbox{text-align:center;max-width:560px;padding:20px}
+.fbox .lab{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.fbox h2{font-family:Fraunces,serif;font-size:28px;margin:8px 0 18px}
+.ftime{font:500 56px "JetBrains Mono",monospace;position:absolute;inset:0;display:grid;place-items:center}
+.fring{position:relative;width:280px;height:280px;margin:0 auto 22px}
+.fsteps{text-align:left;margin:0 auto 20px;max-width:440px;list-style:none;padding:0}
+.fsteps li{display:flex;gap:10px;padding:5px 0;color:var(--ink);font-size:14px}
+.fctl{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.fctl button{border:1px solid var(--line);background:var(--panel2);color:var(--ink);border-radius:10px;padding:10px 16px;font-weight:700;cursor:pointer}
+.fctl button.main{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+/* toast */
+#toasts{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;flex-direction:column;gap:8px}
+.toast{background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:10px;font-weight:600;font-size:13px;box-shadow:0 8px 30px rgba(0,0,0,.3);animation:tin .3s cubic-bezier(.2,.9,.3,1.3)}
+@keyframes tin{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:70}
+#pal{position:fixed;inset:0;z-index:58;background:rgba(17,19,24,.25);backdrop-filter:blur(3px);display:none;align-items:flex-start;justify-content:center;padding-top:12vh}
+#pal.on{display:flex;animation:fade .15s}
+#pal .box{width:min(640px,94vw);background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:0 30px 80px rgba(16,24,40,.25);overflow:hidden}
+#pal input{width:100%;border:0;border-bottom:1px solid var(--line);padding:16px 18px;font:500 16px Inter;background:var(--panel);color:var(--ink);outline:none}
+#pal .res{max-height:52vh;overflow:auto;padding:6px}
+#pal .row{display:grid;grid-template-columns:90px 1fr auto;gap:10px;align-items:center;padding:9px 12px;border-radius:9px;cursor:pointer;font-size:13px}
+#pal .row.sel,#pal .row:hover{background:var(--panel2)}
+#pal .row .d{color:var(--mute);font:500 11px "JetBrains Mono",monospace}
+.search{display:flex;align-items:center;gap:8px;width:100%;border:1px solid var(--line);background:var(--panel);border-radius:9px;padding:8px 10px;color:var(--mute);cursor:pointer;font-weight:600;font-size:12px;margin-bottom:10px}
+.search kbd{margin-left:auto}
+.field{display:flex;flex-direction:column;gap:6px;margin:10px 0}
+.field label{font-size:12px;font-weight:700;color:var(--mute)}
+.field input,.field textarea{border:1px solid var(--line);border-radius:9px;background:var(--panel2);color:var(--ink);padding:9px 11px;font:13px Inter}
+.row2{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.setgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:14px}
+.setgrid h3{margin:0 0 4px;font-size:16px}
+.setgrid p{margin:6px 0;color:var(--mute);font-size:13px}
+.setgrid ol{margin:6px 0;padding-left:20px;font-size:13px}.setgrid li{margin:4px 0}
+.badge{display:inline-block;font-size:11px;font-weight:800;padding:3px 8px;border-radius:99px;background:var(--panel2)}
+#help{position:fixed;inset:0;z-index:55;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center}
+#help.on{display:flex}
+#help .card{width:min(420px,92vw)}
+#help table{width:100%;font-size:13px}#help td{padding:6px 0}
+@media(max-width:1100px){.hero{grid-template-columns:1fr 1fr}.layout2{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:780px){
+ .app{grid-template-columns:1fr}
+ aside{position:fixed;bottom:0;left:0;top:auto;height:auto;width:100%;flex-direction:row;z-index:40;padding:6px 6px calc(6px + env(safe-area-inset-bottom));overflow-x:auto;border-right:0;border-top:1px solid var(--line)}
+ #navs{display:flex;gap:2px}
+ .search{display:none}
+ .brand,.side-foot,.nav kbd{display:none}
+ .nav{flex-direction:column;gap:2px;font-size:10px;padding:6px 8px;min-width:64px;align-items:center}
+ .nav.on{box-shadow:none}
+ main{padding:16px 14px calc(100px + env(safe-area-inset-bottom))}
+ .hero{grid-template-columns:repeat(3,1fr);gap:8px}
+ .hero .nowcard{grid-column:1/-1}
+ .hero .kpi{flex-direction:column;align-items:flex-start;gap:6px;padding:10px 12px}
+ .hero .kpi .ring{width:40px;height:40px}
+ .hero .kpi b{font-size:18px}
+ .hero .kpi span{font-size:10.5px;line-height:1.3}
+ .hero .kpi>div[style]{font-size:22px!important}
+ .top h1{font-size:24px}
+ .layout2 .side{order:2}
+ .blk,.fixed{grid-template-columns:52px 1fr;gap:8px}
+ .nowline{margin-left:60px}.nowline::before{left:-60px;font-size:8px}
+ .dline{grid-template-columns:1fr auto;}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<aside>
+  <div class="brand"><div class="logo"><i>6</i></div><div><b>Cap Six</b><small>Objectif 6/6 · blancs du 4 janv.</small></div></div>
+  <button class="search" id="palBtn">⌕ Rechercher un bloc… <kbd>⌘K</kbd></button><div id="navs"></div>
+  <div class="side-foot">
+    <div class="sync"><span class="dot" id="syncDot"></span><span id="syncTxt">Sauvegarde locale</span></div>
+    <button class="ghost" id="themeBtn">☀ / ☾ Thème clair · sombre</button>
+    <button class="ghost" id="helpBtn">Raccourcis clavier <kbd>?</kbd></button>
+  </div>
+</aside>
+<main>
+  <section class="view on" id="v-today"></section>
+  <section class="view" id="v-plan"></section>
+  <section class="view" id="v-cal"></section>
+  <section class="view" id="v-subj"></section>
+  <section class="view" id="v-read"></section>
+  <section class="view" id="v-dl"></section>
+  <section class="view" id="v-stats"></section>
+  <section class="view" id="v-meth"></section>
+  <section class="view" id="v-set"></section>
+</main>
+</div>
+<div id="focus"></div>
+<div id="pal"><div class="box"><input id="palIn" placeholder="Chercher : « Série 9 », « Frost », « Inde p. 350 », « examen »…" autocomplete="off"><div class="res" id="palRes"></div></div></div>
+<div id="toasts"></div>
+<canvas id="confetti"></canvas>
+<div id="help"><div class="card pad"><h3 style="margin-top:0">Raccourcis</h3><table>
+<tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>Jour précédent / suivant</td></tr>
+<tr><td><kbd>T</kbd></td><td>Revenir à aujourd'hui</td></tr>
+<tr><td><kbd>F</kbd></td><td>Lancer le focus sur le bloc en cours (ou le suivant)</td></tr>
+<tr><td><kbd>Espace</kbd></td><td>Cocher le bloc en cours</td></tr>
+<tr><td><kbd>1</kbd>…<kbd>9</kbd></td><td>Changer de vue</td></tr>
+<tr><td><kbd>⌘K</kbd> / <kbd>Ctrl K</kbd></td><td>Rechercher n'importe quel bloc</td></tr>
+<tr><td><kbd>Échap</kbd></td><td>Fermer</td></tr>
+</table><p style="color:var(--mute);font-size:12px">Synchronisation et installation : onglet Réglages & aide (touche 9).</p><button class="btn sm" onclick="document.getElementById('help').classList.remove('on')">OK</button></div></div>
+
+<script>
+/* =========================================================
+   DONNÉES
+   ========================================================= */
+const SUBJ={M:["Maths","var(--M)"],F:["Français","var(--F)"],H:["Histoire","var(--H)"],G:["Géographie","var(--G)"],A:["Anglais","var(--A)"],S:["Sport","var(--S)"],R:["Repos / bilan","var(--R)"]};
+const TYPES={lecture:"Lecture",exos:"Exercices",redac:"Rédaction",oral:"Oral",flash:"Rappel actif",audio:"Audio",fiche:"Fiche",exam:"Examen",sport:"Sport",bilan:"Bilan",chrono:"Chrono"};
+const START="2026-11-17",END="2027-01-08",SPORT_START="2026-11-30",VAC_START="2026-12-24",EXAM_START="2027-01-04";
+
+function tpl(ds){
+  const w=parse(ds).getDay(), sp=ds>=SPORT_START;
+  if(ds>=VAC_START) return [["v1","08h00–10h00"],["@","10h00–10h15","Pause"],["v2","10h15–12h15"],["@","12h15–13h30","Déjeuner + 15 min de marche"],["v3","13h30–15h30"],["SPORT","15h45–17h15"],["v4","17h30–19h00"],["@","19h00–20h00","Dîner"],["v5","20h00–21h30"]];
+  return {
+   1:[["matin","06h45–07h40"],["aller","07h55–08h30"],["@","08h30–12h30","Cours · Maths ×2, Anglais ×3"],sp?["SPORT","12h40–14h10"]:["midi","12h40–14h15"],["@","14h30–17h10","Cours · Français ×3"],["retour","17h10–17h45"],["s1","18h00–19h15"],["@","19h15–19h45","Dîner"],["s2","19h45–21h00"],["s3","21h10–21h50"]],
+   2:[["matin","06h45–07h40"],["aller","07h55–08h30"],["@","08h30–12h45","Cours · Géographie ×3 (+ oraux de géo dès 11h15)"],["midi","12h50–13h55"],["@","14h00–16h30","Cours · Maths ×3"],["retour","16h30–17h05"],sp?["SPORT","17h15–18h45"]:["s1","17h20–18h45"],["@","18h50–19h20","Dîner"],["s2","19h30–20h50"],["s3","21h00–21h50"]],
+   3:[["matin","06h45–07h40"],["aller","07h55–08h30"],["@","08h30–12h00","Cours · Histoire ×3, Vidéo"],["midi","12h05–12h55"],["@","13h00–16h45","Cours · Anglais ×4"],["retour","16h45–17h20"],sp?["SPORT","17h30–19h00"]:["s1","17h35–18h55"],["@","19h00–19h30","Dîner"],["s2","19h35–20h50"],["s3","21h00–21h50"]],
+   4:[["matin","06h45–07h40"],["aller","07h55–08h30"],["@","08h30–12h55","Cours · Maths ×2, Histoire ×3"],["midi","13h00–13h55"],["@","14h00–18h30","Activités culturelles / oraux (si tu finis tôt : bloc bonus géo)"],["retour","18h30–19h05"],["@","19h10–19h40","Dîner"],["s2","19h45–21h00"],["s3","21h10–21h50"]],
+   5:[["matin","06h45–07h40"],["aller","07h55–08h30"],["@","08h30–12h00","Cours · Français ×3, Débat"],["midi","12h05–12h55"],["EXAM","13h00–17h00"],["retour","17h00–17h35"],sp?["SPORT","17h45–19h15"]:["s1","17h50–19h10"],["@","19h15–19h45","Dîner"],["s2","19h50–21h00"],["s3","21h10–21h50"]],
+   6:[["b1","08h30–10h30"],["b2","10h45–12h45"],["@","12h45–14h00","Déjeuner"],["b3","14h00–16h00"],sp?["SPORT","16h15–17h45"]:["b4","16h15–17h45"],["@","18h00–19h00","Dîner"],["b5","19h00–20h30"],["b6","20h45–21h30"]],
+   0:[sp?["SPORT","09h00–10h30"]:["b1","09h00–11h00"],["b2","11h15–12h45"],["@","12h45–14h00","Déjeuner"],["b3","14h00–16h00"],["b4","16h15–18h00"],["b5","18h15–19h00"],["@","dès 19h00","Soirée libre · vraie coupure · coucher 22h30"]]
+  }[w];
+}
+function commute(ds){
+  if(ds>=VAC_START) return null;
+  if(ds<"2026-11-20") return ["F","audio","Résumés audio Montaigne / Diderot",""];
+  if(ds<="2026-12-10") return ["A","audio","Jane Eyre · audiobook","Version anglaise, vitesse 1.25×|À la descente : résume la scène en 2 phrases à voix basse"];
+  if(ds<="2026-12-13") return ["A","audio","Réécoute de tes enregistrements","Frost, Dickinson, fiches d'histoire"];
+  return ["A","audio","The Handmaid's Tale · audiobook","Version anglaise, vitesse 1.25×|Note 1 citation marquante en arrivant"];
+}
+
+/* Plan jour par jour : [matière, type, titre, étapes séparées par |] */
+const P={
+"2026-11-12":{matin:null,aller:null,
+ midi:["H","lecture","Inde anglaise · p. 1–20","Sommaire du dossier en 5 min : repère les grandes parties|Lecture active p. 1–20 : titres, dates, acteurs, chiffres|Fiche : 5 lignes de résumé + 5 dates"],
+ s2:["M","exos","Analyse S1 · zéros (Δ) — ex. 1","Vidéo Yvan Monka « Résoudre une équation du second degré » (15 min)|Fiche : Δ = b² − 4ac, 3 cas, racines, forme factorisée a(x−x₁)(x−x₂)|Ex. 1 A–F : affines, Δ, mise en évidence de x pour les cubiques (E, F)|Ex. 1 G–L : produits de facteurs → chaque facteur = 0|Vérifie avec les réponses en fin de série · explique Δ à voix haute 3 min"],
+ s3:["F","lecture","Montaigne · « Des Cannibales » (1re moitié)","Lecture en français modernisé|Surligne chaque passage sur « barbare » / « sauvage »|5 citations sur fiche"]},
+"2026-11-13":{
+ matin:["H","lecture","Inde anglaise · p. 21–39","Lecture active|Complète la chronologie 1757 →"],
+ midi:["F","lecture","Montaigne · « Des Cannibales » (2e moitié)","Fin du chapitre|5 citations de plus (10 au total)"],
+ s1:["M","exos","Analyse S1 · tableaux de signes + inéquations — ex. 2","Vidéo « Signe d'un trinôme » (Yvan Monka)|Règle : signe de a à l'extérieur des racines, contraire entre elles|Ex. 2A : tableau de signes des 12 fonctions (une ligne par facteur)|Ex. 2B : lis les solutions des 12 inéquations dans les tableaux (crochets ouverts / fermés !)|Corrige avec les réponses Z et S"],
+ s2:["H","lecture","Inde anglaise · p. 40–55","Lecture active|Fiche de la partie"],
+ s3:["F","fiche","Fiche Montaigne","Thèse : le relativisme (« chacun appelle barbarie ce qui n'est pas de son usage »)|Contexte : Grandes Découvertes, guerres de religion|10 citations classées par idée|Raconte l'œuvre en 3 min à voix haute"]},
+"2026-11-14":{
+ b1:["M","exos","Analyse S3 · graphes, zéros, intersections, paramètres","Ex. 1 : tracer 4−2x, x²−2, x³−x, |1−x²||Ex. 2 : zéros (x−x³, x⁴−4x², …)|Ex. 3 : intersection f = g → f − g = 0|Ex. 4-6 (type examen) : paramètre b ou h → condition sur Δ (Δ < 0, Δ = 0)"],
+ b2:["M","exos","Analyse S4 · définitions, pentes, dérivées","Ex. 1 : 5 définitions par cœur (zéro, intersection, pente, tangente, dérivée), en phrases complètes|Ex. 2 : pentes lues sur les graphes|Ex. 3 : dérivées A–I, toutes les étapes écrites|Ex. 5-6 : vrai/faux + réflexion"],
+ b3:["F","lecture","Diderot · Supplément au Voyage de Bougainville · ch. I–III","Personnages : A et B, Orou, l'aumônier, le vieillard|Note les thèses de chaque chapitre"],
+ b4:["F","fiche","Diderot · ch. IV–V + fiche œuvre","Fin de lecture|Fiche : nature vs lois civiles et religieuses, critique de la morale européenne, forme du dialogue|10 citations"],
+ b5:["H","lecture","Inde anglaise · p. 56–70","Lecture active|Fiche des p. 40–70"],
+ b6:["A","oral","Frost · poème 1","Lis-le 3 fois à voix haute|Sens littéral en 3 phrases|3 procédés + 3 citations|Analyse orale enregistrée (3 min)"]},
+"2026-11-15":{custom:[
+ ["20h00–21h00","M","exos","Analyse S1 · Δ, zéros et signes (version condensée)","Vidéo Yvan Monka « second degré » en 1.5× (10 min) → fiche Δ = b² − 4ac, 3 cas, racines|Ex. 1 : A, C, D, E, G, I seulement (affine, Δ, mise en évidence, produit)|Ex. 2 : tableaux de signes + inéquations de ces 6 fonctions|Vérifie avec les réponses Z et S"],
+ ["21h10–22h00","F","lecture","Montaigne · « Des Cannibales » (1re moitié)","Texte en français modernisé|Surligne « barbare » / « sauvage »|5 citations sur fiche"],
+ ["22h30","R","bilan","Coucher","Réveil 06h30 demain : la semaine est dense"]]},
+"2026-11-16":{
+ matin:["H","lecture","Inde anglaise · p. 1–25 (rattrapage)","Sommaire du dossier en 5 min|Lecture active : dates, acteurs, chiffres|Chronologie à partir de 1757"],
+ aller:["F","audio","Résumé audio / vidéo de « Des Cannibales »","Une vidéo de résumé-analyse en 1.25×"],
+ midi:["M","exos","Dérivées · S4 ex. 3 + S5 ex. 1","Règles : (xⁿ)' = n·xⁿ⁻¹, (uv)' = u'v + uv', (u/v)' = (u'v − uv')/v²|S4 ex. 3 : A à I, toutes les étapes|S5 ex. 1 : A, B, D, E (produit, carré, quotient)"],
+ retour:["F","audio","Résumé audio / vidéo du Supplément au Voyage de Bougainville",""],
+ s1:["F","fiche","Montaigne · 2e moitié + fiche","Fin du texte|Fiche : thèse du relativisme (« chacun appelle barbarie ce qui n'est pas de son usage »), contexte, 10 citations classées|Raconte l'œuvre 3 min à voix haute"],
+ s2:["M","exos","Exponentielle · cours + S8 ex. 1","Vidéo « fonction exponentielle » : eˣ > 0, (eˣ)' = eˣ, (e^u)' = u'·e^u|S8 ex. 1 : les 10 dérivées, sous forme factorisée|Corrige avec les réponses"],
+ s3:["H","lecture","Inde anglaise · p. 26–45",""]},
+"2026-11-17":{matin:null,aller:null,midi:null,
+ retour:["F","audio","Résumé audio / vidéo de « Des Cannibales » (Montaigne)","Une vidéo de résumé-analyse en 1.25×"],
+ s1:["M","exos","Géométrie S1 · vecteurs (à rendre jeudi)","Ex. 1 : représenter chaque vecteur + norme ‖a‖ = √(a₁² + a₂²)|Ex. 2 : norme imposée (équation en a₂), vecteur à composantes égales, colinéarité : b = λ·a, même sens si λ > 0|Ex. 3 : combinaisons linéaires (2a + 4b…)|Rédaction propre directement sur la copie à rendre"],
+ s2:["M","exos","Géométrie S2 · aires — ex. 1","Aire du parallélogramme = |a₁b₂ − a₂b₁| ; triangle = la moitié|Q. 4-5 : aire imposée → équation (attention à la valeur absolue : 2 solutions)|Copie propre"],
+ s3:["H","lecture","Inde anglaise · p. 70–95 (pour le cours de demain)","Lecture active : dates, acteurs, chiffres|5 lignes de fiche"]},
+"2026-11-18":{
+ matin:["H","lecture","Inde anglaise · p. 96–117 (pour le cours)","Lecture rapide|Relis ta fiche juste avant d'entrer en classe"],
+ aller:["F","audio","Résumé audio de « Des Cannibales » (2e écoute)",""],
+ midi:["F","lecture","Montaigne · « Des Cannibales » (1re moitié)","Français modernisé|Surligne « barbare » / « sauvage »|5 citations"],
+ retour:["F","audio","Résumé audio / vidéo du Supplément au Voyage de Bougainville",""],
+ s1:["M","exos","Géométrie S2 · produit scalaire, angle — ex. 2 + copie S1-S2 finale","⟨a,b⟩ = a₁b₁ + a₂b₂ ; perpendiculaires ⇔ ⟨a,b⟩ = 0|cos θ = ⟨a,b⟩ / (‖a‖·‖b‖)|Relecture des deux séries → dans le sac pour jeudi 8h30"],
+ s2:["F","fiche","Montaigne · 2e moitié + fiche","Thèse : relativisme (« chacun appelle barbarie ce qui n'est pas de son usage »)|Contexte : Grandes Découvertes, guerres de religion|10 citations classées · raconte l'œuvre 3 min à voix haute"],
+ s3:["H","lecture","Inde anglaise · p. 117–140",""]},
+"2026-11-19":{
+ matin:["H","lecture","Inde anglaise · p. 140 → fin (pour le cours)",""],
+ aller:["F","audio","Résumé audio du Supplément (2e écoute)",""],
+ midi:["F","lecture","Diderot · Supplément · ch. I à III","Personnages : A et B, Orou, l'aumônier, le vieillard|Thèse de chaque chapitre"],
+ retour:["F","audio","Une vidéo « réussir la dissertation »",""],
+ s2:["F","fiche","Diderot · ch. IV-V + fiche + tableau Montaigne / Diderot","Nature vs lois civiles et religieuses, critique de la morale européenne, dialogue|10 citations|Tableau : regard sur l'autre, nature / civilisation, critique de l'Europe, forme"],
+ s3:["F","fiche","Méthode de la dissertation + plan-type « Ici et l'ailleurs »","Onglet Méthodes → fiche d'une page|Un plan en 3 parties avec exemples"]},
+"2026-11-20":{exam:"Examen écrit · Français : « Ici et l'ailleurs » (Montaigne, Diderot)",
+ matin:["F","flash","Relecture calme","Fiches, plan-type, 15 citations|Aucun nouveau contenu"],
+ aller:["F","audio","Tes enregistrements Montaigne / Diderot",""],
+ midi:["F","oral","Échauffement","3 sujets → problématique + plan en 5 min chacun"],
+ retour:["R","bilan","Pause",""],
+ s1:["M","exos","Analyse S1 · zéros (Δ), signes, inéquations","Fiche Δ = b² − 4ac, 3 cas, racines, forme factorisée|Ex. 1 A–L : affines, Δ, mise en évidence de x, produits|Ex. 2 : tableaux de signes + inéquations (crochets ouverts / fermés)|Corrige avec Z et S"],
+ s2:["A","oral","Frost · poème 1","Lis-le 3 fois à voix haute|Sens littéral en 3 phrases|3 procédés + 3 citations|Analyse orale enregistrée (3 min)"],
+ s3:["R","bilan","Débrief de l'examen de français + coucher tôt",""]},
+"2026-11-21":{
+ b1:["M","exos","Analyse S2 · transformations, fonctions par points","Ex. 1 : −g, g(−x), |g|, 2−f, f+g, f·g|Ex. 2-3 : affine par 2 points, parabole par 3 points (système)|Ex. 4-5 : équations depuis un graphe, intersections"],
+ b2:["M","exos","Analyse S3 · graphes, intersections, paramètres","Ex. 1 : tracer 4−2x, x²−2, x³−x, |1−x²||Ex. 3 : intersection f = g ⇔ f − g = 0|Ex. 4-6 (type examen) : paramètre → condition sur Δ (Δ < 0, Δ = 0)"],
+ b3:["A","oral","Frost · poèmes 2 et 3","Même protocole pour chacun"],
+ b4:["M","exos","Analyse S4 · définitions, pentes, dérivées","Ex. 1 : 5 définitions par cœur, en phrases complètes|Ex. 2 : pentes lues sur les graphes|Ex. 3 : dérivées A–I, toutes les étapes|Ex. 5-6 : vrai / faux"],
+ b5:["H","lecture","Histoire de l'Inde moderne · p. 225–260","Lecture active"],
+ b6:["A","oral","Frost · poème 4",""]},
+"2026-11-22":{
+ b1:["M","exos","Analyse S5 · dérivées produit / quotient, tangentes, variations","(uv)' = u'v + uv' ; (u/v)' = (u'v − uv')/v²|Ex. 2 : pente de tangente, points où f' = 1, sommets|Ex. 3-4 : tableaux de variation (f' → zéros → signe de f' → variations)"],
+ b2:["A","oral","Frost · poèmes 5 et 6",""],
+ b3:["M","chrono","Cours primitives et aires, puis Analyse S6 au chrono","Vidéo « primitive et aire » : primitive de xⁿ, aire = F(b) − F(a)|S6 en conditions d'examen (46 pts, ~1h30) : temps proportionnel aux points|Correction + cahier d'erreurs"],
+ b4:["H","lecture","Inde moderne · p. 261–294","Pour le cours du 25/11"],
+ b5:["A","oral","Frost · poème 7 + bilan de la semaine","Tableau poèmes × thèmes × citations"]},
+"2026-11-23":{
+ matin:["A","flash","Citations Frost","3 par poème, à réciter"],
+ aller:["A","audio","Tes enregistrements Frost",""],
+ midi:["M","exos","Géométrie S3 · points, aires, division d'un segment — ex. 1-4","Point C : AC colinéaire à AB et ‖AC‖ = 10|Aire du triangle OAB, point sur un axe|Points qui divisent AB en 3|Carré ABCD"],
+ retour:["A","audio","Tes enregistrements Frost",""],
+ s1:["A","redac","Plans détaillés · poèmes 1, 2, 3","Thesis + 3 parties + citations"],
+ s2:["M","exos","Analyse S7 · optimisation — problèmes 1 à 5","Inconnues → contrainte → fonction d'une variable → f' = 0 → tableau → phrase de conclusion|Vérifie avec les réponses données"],
+ s3:["H","lecture","Inde moderne · p. 295–315",""]},
+"2026-11-24":{
+ matin:["H","fiche","Inde moderne · fiche p. 225–294","1 page"],
+ aller:["A","audio","Tes enregistrements Frost",""],
+ midi:["M","exos","Analyse S8 · dérivées de l'exponentielle — ex. 1","(eˣ)' = eˣ, (e^u)' = u'·e^u, produit|10 dérivées factorisées"],
+ retour:["A","audio","Tes enregistrements Frost",""],
+ s1:["A","chrono","Essay chrono 1h25 · un poème de Frost","Thesis statement, PEAL, conclusion"],
+ s2:["M","exos","Analyse S8 · études de x·eˣ et x²·eˣ — ex. 2-3","Zéros, tangentes horizontales, inflexion (f'' = 0)|Primitive : vérifier F' = f · aire entre 0 et 1 · tangente en x = 1"],
+ s3:["A","redac","Plans détaillés · poèmes 4 et 5",""]},
+"2026-11-25":{
+ matin:["H","flash","Révolte des cipayes (1857)","Relis ta fiche avant l'exposé en classe"],
+ aller:["A","audio","Tes enregistrements Frost",""],
+ midi:["M","exos","Géométrie S3 · triangles rectangles — ex. 5-7","Rectangle en A ⇔ ⟨AB, AC⟩ = 0|Aire imposée → point D"],
+ retour:["A","audio","Tes enregistrements Frost",""],
+ s1:["H","lecture","Inde moderne · p. 316–349","Pour le cours de demain"],
+ s2:["A","redac","Plans détaillés · poèmes 6 et 7",""],
+ s3:["M","exos","Analyse S9 · limites et asymptotes — ex. 1","Limites en ±∞ des 8 fonctions (eˣ → 0 en −∞)|Asymptote horizontale y = a"]},
+"2026-11-26":{
+ matin:["A","oral","Tour des 7 poèmes à voix haute","7 min de discours par poème"],
+ aller:["A","audio","Tes enregistrements Frost",""],
+ midi:["H","fiche","Inde moderne · fiche p. 295–349",""],
+ retour:["A","audio","Tes enregistrements Frost",""],
+ s2:["M","exos","Analyse S9 · étude de 1 + 2x·eˣ — ex. 2","f', sommet, asymptote, graphe|Droite d, aire entre f et d avec F|Maximum de g − f"],
+ s3:["A","flash","Relecture des 7 plans + 20 citations incontournables",""]},
+"2026-11-27":{exam:"Examen écrit · Anglais : dissertation sur Robert Frost",
+ matin:["A","flash","Relecture calme des citations","Aucun nouveau contenu"],
+ aller:["A","audio","Tes enregistrements Frost",""],
+ midi:["A","oral","Échauffement","2 sujets → thesis statement + plan en 5 min"],
+ s1:["M","exos","Analyse S10 · équations eˣ et ln — ex. 1-2","eˣ = a ⇔ x = ln a ; ln x = b ⇔ x = eᵇ"],
+ s2:["M","exos","Analyse S10 · ln, tangentes, aire, modèle — ex. 3-5","Tangentes en 1 et e, primitive x(ln x − 1), aires|Ex. 5 : 20 + 70·e^(−0,05x) (résoudre avec ln, limite)"],
+ s3:["R","bilan","Débrief de l'essay",""]},
+"2026-11-28":{
+ b1:["M","exos","Analyse S11 · domaines de définition","ln(u) → u > 0 ; 1/u → u ≠ 0 ; √u → u ≥ 0 (tableau de signes)|Asymptotes verticales aux bornes ouvertes|Ex. 1 (1-12) + ex. 2"],
+ b2:["M","exos","Géométrie S4 · droites paramétriques","x = a₁ + k·d₁, y = a₂ + k·d₂ : points, appartenance, intersections avec les axes|Droite parallèle par un point|Démonstration du milieu M"],
+ b3:["M","exos","Analyse S12 · dérivées ln et √ + étude de x/(x²−4) — ex. 1-2","(ln u)' = u'/u ; (√u)' = u'/(2√u)|Étude complète : domaine, zéros, extremums, signe, variations, asymptotes, esquisse"],
+ b4:["M","exos","Analyse S7 · optimisation — problèmes 6 à 10","Même méthode, un schéma à chaque fois"],
+ b5:["G","fiche","Géo · fiche du cours en classe (rester à jour)",""],
+ b6:["R","bilan","Léger : relis ton cahier d'erreurs maths",""]},
+"2026-11-29":{
+ b1:["M","exos","Analyse S12 · études de ln(x²−1), x/√(x²−9) — ex. 3-6","Les plus proches de l'examen final|Ex. 6 : primitive + aire"],
+ b2:["M","exos","Géométrie S5","Cours de la série + exos sans corrigé|Fiche des nouveaux concepts|Cahier d'erreurs"],
+ b3:["M","exos","Analyse S13 · division euclidienne","P(x) = D(x)·Q(x) + R(x)|Racine connue → factoriser → 3 racines|Reste de P par (x − a) = P(a) → systèmes à paramètres (ex. 3-5)"],
+ b4:["M","exos","Géométrie S6","Même protocole"],
+ b5:["R","bilan","Bilan + point d'étape maths","Coche les séries faites dans l'onglet Matières"]},
+"2026-11-30":{
+ matin:["M","flash","Formulaire en flashcards","Dérivées (produit, quotient, eˣ, ln, √), primitives, limites de eˣ, tangente, Δ, produit scalaire, aire"],
+ s1:["M","exos","Analyse S14 · asymptote oblique","Division de P par D → f(x) = ax + b + R/D → asymptote y = ax + b|Ex. 1-4"],
+ s2:["M","exos","Géométrie S7","Même protocole"],
+ s3:["H","flash","Inde · révision hebdo","Fiches 1757-1857 en rappel actif"]},
+"2026-12-01":{
+ matin:["M","flash","Méthode « étude de fonction » récitée à voix haute","Domaine → zéros → f' → variations → signe → limites / asymptotes → aire → tangente → graphe"],
+ midi:["M","exos","Analyse S15 · optimisation (exos 4.40 à 4.53)","Lire la donnée → relations → contrainte → dérivée → conclusion"],
+ s2:["M","exos","Géométrie S8 (1re moitié)","Cours + exos sans corrigé|Fiche des concepts de la série"],
+ s3:["M","exos","Analyse S15 · exos 4.59-4.62, 4.85-4.88",""]},
+"2026-12-02":{
+ matin:["M","flash","Formulaire en flashcards",""],
+ midi:["M","exos","Géométrie S8 (fin) + concepts","Refais les exos types de la série|Fiche : définitions et formules de géométrie S1 → S8"],
+ s2:["M","chrono","Mini-examen chrono 1h15","S6 ex. 3 + S12 ex. 4 + 2 exos de géométrie (S3, S8), sans notes|Correction immédiate"],
+ s3:["M","exos","Cahier d'erreurs · refais à blanc les exos ratés",""]},
+"2026-12-03":{
+ matin:["M","flash","Formulaire + méthodes",""],
+ midi:["M","exos","Géométrie · un exo par série (S1 → S8)",""],
+ s2:["M","exos","Analyse · un exo type par série (S1 → S15)","Priorité aux séries où tu as eu le plus d'erreurs"],
+ s3:["R","bilan","Sac prêt + coucher tôt","Calculette, formulaire, règle"]},
+"2026-12-04":{exam:"Test écrit · Maths : toutes les séries d'analyse + géométrie S1-S8",
+ matin:["M","flash","Relecture calme du formulaire et du cahier d'erreurs","Aucun nouvel exercice"],
+ aller:["M","audio","Récite mentalement les méthodes",""],
+ midi:["M","exos","Échauffement léger","1 dérivée, 1 tableau de signes, 1 produit scalaire"],
+ s2:["H","lecture","Traite · p. 1–20 (démarrage)","Sommaire, introduction, chronologie"],
+ s3:["R","bilan","Débrief du test de maths",""]},
+"2026-12-05":{
+ b1:["H","lecture","Inde anglaise · p. 1–70 (rattrapage)","Les pages sautées du début du dossier (1757 →)|Fiche chronologique"],
+ b2:["F","lecture","Germaine de Staël · lecture (1)","Contexte, biographie, enjeux"],
+ b3:["A","oral","Dickinson · poèmes 1 et 2","Même protocole que Frost"],
+ b5:["H","lecture","Traite · p. 21–60",""],
+ b6:["G","fiche","Géo · chapitre 1 (depuis zéro)","Fiche + carte mentale"]},
+"2026-12-06":{
+ b2:["H","lecture","Traite · p. 61–100",""],
+ b3:["F","fiche","Staël · lecture (2) + fiche",""],
+ b4:["A","oral","Dickinson · poèmes 3 et 4",""],
+ b5:["R","bilan","Bilan",""]},
+"2026-12-07":{
+ matin:["H","lecture","Inde moderne · p. 350–370",""],
+ s1:["H","lecture","Inde moderne · p. 371–400",""],
+ s2:["H","lecture","Traite · p. 101–130",""],
+ s3:["A","fiche","Dickinson · synthèse des 4 poèmes + comparaison avec Frost",""]},
+"2026-12-08":{
+ matin:["H","lecture","Inde moderne · p. 401–415",""],
+ midi:["G","fiche","Géo · fiche du cours du jour",""],
+ s2:["H","lecture","Inde moderne · p. 416–437","Pour le cours de demain"],
+ s3:["F","flash","Staël · citations + fin de fiche",""]},
+"2026-12-09":{
+ matin:["H","fiche","Inde · fiche p. 350–437 + massacre d'Amritsar (1919)","Relis-la avant l'exposé"],
+ midi:["M","exos","Maths · série de la semaine (cours en classe)","Rester à jour + cahier d'erreurs"],
+ s2:["H","lecture","Inde moderne · p. 438–465",""],
+ s3:["G","fiche","Géo · chapitre 2",""]},
+"2026-12-10":{
+ matin:["H","lecture","Inde moderne · p. 466–490","Pour le cours d'aujourd'hui"],
+ midi:["A","fiche","Jane Eyre · fiche des chapitres écoutés","Intrigue, personnages, citations"],
+ s2:["H","lecture","Traite · p. 131–170",""],
+ s3:["A","lecture","Jane Eyre · finir (audio + passages clés)",""]},
+"2026-12-11":{
+ matin:["F","flash","Flashcards des 3 œuvres",""],
+ midi:["F","oral","Échauffement · 3 problématiques",""],
+ s2:["F","fiche","Tableau Montaigne / Diderot / Staël","Rapport à l'ailleurs, à l'autre, à sa propre culture"],
+ s3:["R","bilan","Bilan léger",""]},
+"2026-12-12":{
+ b1:["H","lecture","Traite · p. 171–230",""],
+ b2:["M","exos","Maths · série de la semaine + cahier d'erreurs",""],
+ b3:["F","chrono","Dissertation français chrono · 1re partie","Brouillon + intro + I"],
+ b5:["F","chrono","Dissertation français chrono · fin","II, III, conclusion, relecture"],
+ b6:["G","oral","Oral géo enregistré (chap. 1-2)",""]},
+"2026-12-13":{
+ b2:["H","fiche","Traite · p. 231–300 + fiche synthèse 2 pages",""],
+ b3:["A","chrono","Essay Jane Eyre chrono · 1re partie","Brouillon + intro + I"],
+ b4:["A","chrono","Essay Jane Eyre chrono · fin",""],
+ b5:["R","bilan","Bilan",""]},
+"2026-12-14":{
+ matin:["H","lecture","Inde moderne · p. 491–510",""],
+ s1:["H","lecture","Inde moderne · p. 511–530",""],
+ s2:["H","lecture","Toussaint · p. 1–30","Sommaire, introduction, chronologie"],
+ s3:["A","lecture","The Handmaid's Tale · début","Audio aussi dans les trajets dès aujourd'hui"]},
+"2026-12-15":{
+ matin:["H","lecture","Inde moderne · p. 531–551","Pour le cours de demain"],
+ midi:["G","fiche","Géo · fiche du cours du jour",""],
+ s2:["H","lecture","Toussaint · p. 31–60",""],
+ s3:["G","fiche","Géo · chapitre 3",""]},
+"2026-12-16":{
+ matin:["H","fiche","Inde · fiche p. 491–551 + Marche du sel (1930)","Avant l'exposé en classe"],
+ midi:["M","exos","Maths · série de la semaine",""],
+ s2:["H","lecture","Toussaint · p. 61–95",""],
+ s3:["A","lecture","The Handmaid's Tale",""]},
+"2026-12-17":{
+ matin:["H","lecture","Toussaint · p. 96–115",""],
+ midi:["A","lecture","The Handmaid's Tale",""],
+ s2:["H","lecture","Toussaint · p. 116–150",""],
+ s3:["A","lecture","The Handmaid's Tale",""]},
+"2026-12-18":{
+ matin:["F","flash","Flashcards",""],
+ midi:["F","oral","Échauffement",""],
+ s2:["F","fiche","Fiches finales des 3 œuvres","1 page chacune"],
+ s3:["R","bilan","Bilan de la semaine",""]},
+"2026-12-19":{
+ b1:["H","lecture","Toussaint · p. 151–195",""],
+ b2:["M","exos","Maths · reprise analyse S12-S15 + géométrie S5-S8",""],
+ b3:["H","redac","Traite · plan détaillé en 2 parties + intro","Problématique type, chrono 1h10"],
+ b5:["A","lecture","The Handmaid's Tale",""],
+ b6:["G","fiche","Géo · chapitre 4 + synthèse",""]},
+"2026-12-20":{
+ b2:["H","lecture","Inde moderne · p. 552–580",""],
+ b3:["F","chrono","Dissertation français chrono · 1re partie","Sujet nouveau, 3 œuvres"],
+ b4:["F","chrono","Dissertation français chrono · fin",""],
+ b5:["R","bilan","Bilan",""]},
+"2026-12-21":{
+ matin:["H","lecture","Inde moderne · p. 581 → fin","Pour le cours du 23/12"],
+ s1:["H","lecture","Toussaint · p. 196–240",""],
+ s2:["M","exos","Maths · cahier d'erreurs (analyse + géométrie)",""],
+ s3:["A","lecture","The Handmaid's Tale",""]},
+"2026-12-22":{
+ matin:["H","fiche","Inde · fiche p. 552–fin",""],
+ midi:["G","fiche","Géo · fiche du cours du jour",""],
+ s2:["H","lecture","Toussaint · p. 241–300",""],
+ s3:["A","lecture","The Handmaid's Tale · finir",""]},
+"2026-12-23":{
+ matin:["H","flash","Assassinat de Gandhi (30.1.1948)","Relis ta fiche avant l'exposé"],
+ midi:["M","flash","Formulaire",""],
+ s2:["H","fiche","Toussaint · fiche synthèse 2 pages",""],
+ s3:["R","bilan","Fin des cours · bilan",""]},
+"2026-12-24":{custom:[
+ ["08h00–10h00","M","exos","Série de Noël · partie 1 : étude de fonctions (1.2 et 1.3)","Relis le récapitulatif de méthode 1.1 avant"],
+ ["10h15–12h15","A","fiche","The Handmaid's Tale · fiche","Thèmes, personnages, structure, 15 citations"],
+ ["13h30–15h00","H","fiche","Inde · synthèse globale 1757-1947 (partie 1)",""],
+ ["dès 15h00","R","bilan","Libre · Noël",""]]},
+"2026-12-25":{custom:[["Journée","R","bilan","Repos complet","C'est ce qui rend possibles les 9 jours suivants"]]},
+"2026-12-26":{custom:mock("M","Examen blanc maths n°1 (4h)","Série 6 refaite en conditions (46 pts) + 1 étude complète type S12 + exos de géométrie S1-S4",["H","fiche","Inde · synthèse globale (partie 2)",""],["A","oral","Oral anglais 15 + 15","Poème tiré au hasard"])},
+"2026-12-27":{custom:mock("F","Examen blanc français n°1 (4h)","Dissertation sur les 3 œuvres",["M","exos","Série de Noël · partie 2 : étude d'un graphe","Retrouver le polynôme par un système"],["G","oral","Oral géo 15 + 15",""])},
+"2026-12-28":{custom:mock("H","Examen blanc histoire n°1 (4h)","Dissertation en 2 parties (Traite, Toussaint ou Inde)",["M","exos","Série de Noël · parties 3 et 4 : optimisation, médianes",""],["A","flash","Citations des 4 œuvres",""])},
+"2026-12-29":{custom:mock("G","Examen blanc géographie (4h) + oral","Écrit 4h puis oral 15 + 15 enregistré",["M","exos","Série de Noël · partie 5 : cercles","Équation du cercle, centre et rayon (complétion du carré)"],["A","lecture","Relecture des passages clés de Jane Eyre / The Handmaid's Tale",""])},
+"2026-12-30":{custom:mock("A","Examen blanc anglais (4h) + oral","Essay poème + roman, puis oral 15 + 15",["M","exos","Série de Noël · 1.4 (exercice difficile) + cahier d'erreurs",""],["H","flash","Flashcards des 3 dossiers",""])},
+"2026-12-31":{custom:[
+ ["08h00–12h00","M","exam","Examen blanc maths n°2 (4h)","Étude complète (ln ou exp) + optimisation + division euclidienne + géométrie (droites, produit scalaire)"],
+ ["13h30–15h00","M","exos","Correction",""],
+ ["15h15–16h45","S","sport","Sport",""],
+ ["dès 17h00","R","bilan","Soirée libre · Nouvel An",""]]},
+"2027-01-01":{custom:[
+ ["Matin","R","bilan","Repos",""],
+ ["15h00–16h30","H","flash","Flashcards des 3 dossiers d'histoire",""],
+ ["16h45–18h00","A","oral","Citations + 1 oral",""]]},
+"2027-01-02":{custom:mock("H","Examen blanc histoire n°2 (4h)","Nouveau sujet",["F","redac","3 plans-types sur des sujets nouveaux",""],["G","oral","Oral géo ×1 + oral anglais ×1",""])},
+"2027-01-03":{custom:[
+ ["09h30–11h00","M","exos","Formulaire + ex. 2 et 3 de l'examen 0 à blanc",""],
+ ["11h15–12h30","M","exos","Un exercice par série (S1 → S15) + géométrie S1-S5",""],
+ ["14h00–15h30","F","flash","Plans-types + citations",""],
+ ["15h45–17h15","S","sport","Sport léger",""],
+ ["17h30–18h30","R","bilan","Sac prêt","Convocation, calculette, formulaire, stylos"],
+ ["22h00","R","bilan","Coucher",""]]},
+"2027-01-04":{custom:examDay("M","Examen blanc · Mathématiques (4h)",["F","flash","Fiches + citations, rien de nouveau",""])},
+"2027-01-05":{custom:examDay("F","Examen blanc · Français (4h)",["H","flash","Fiches chronologiques des 3 dossiers",""])},
+"2027-01-06":{custom:examDay("H","Examen blanc · Histoire (4h)",["G","flash","Fiches + 1 oral à voix haute",""])},
+"2027-01-07":{custom:examDay("G","Examen blanc · Géographie (4h) + oral",["A","flash","Citations + 1 oral à voix haute",""])},
+"2027-01-08":{custom:[
+ ["Matin","A","exam","Examen blanc · Anglais écrit (4h)",""],
+ ["Après-midi","A","exam","Oral d'anglais (15 + 15)",""],
+ ["Soir","R","bilan","Terminé · soirée off méritée",""]]}
+};
+function mock(s,title,detail,a,b){return [["08h00–12h00",s,"exam",title,detail+"|Conditions réelles, sans notes"],["13h30–15h00",s,"exos","Correction détaillée","Cahier d'erreurs : ce que tu ferais différemment"],["15h15–16h45","S","sport","Sport",""],["17h00–18h30",...a],["20h00–21h30",...b]];}
+function examDay(s,title,ev){return [["Selon convocation",s,"exam",title,"Lis tout le sujet d'abord|Garde 20 min de relecture"],["19h30–21h00",...ev],["22h30","R","bilan","Coucher",""]];}
+
+/* Lectures suivies (objectif interpolé entre jalons) */
+const READS=[
+ {id:"inde1b",s:"H",name:"« L'Inde anglaise » · p. 70 → fin (cours)",unit:"p.",start:69,end:150,editEnd:true,ms:[["2026-11-16",69],["2026-11-17",95],["2026-11-18",140],["2026-11-19","end"]],note:"Calendrier PrEP : p. 70-117 (18/11), 117-fin (19/11). Les p. 1-70 sont rattrapées le 5/12."},
+ {id:"inde1a",s:"H",name:"« L'Inde anglaise » · p. 1-70 (rattrapage)",unit:"p.",start:0,end:70,ms:[["2026-12-04",0],["2026-12-05",70]]},
+ {id:"inde2",s:"H",name:"« Histoire de l'Inde moderne »",unit:"p.",start:224,end:610,editEnd:true,ms:[["2026-11-20",224],["2026-11-21",260],["2026-11-22",294],["2026-11-23",315],["2026-11-25",349],["2026-12-06",349],["2026-12-07",400],["2026-12-08",437],["2026-12-09",465],["2026-12-10",490],["2026-12-14",530],["2026-12-15",551],["2026-12-20",580],["2026-12-21","end"]],note:"Cours : 225-294 (25/11), 295-349 (26/11), 350-437 (9/12), 438-490 (10/12), 491-551 (16/12), 552-fin (23/12)"},
+ {id:"traite",s:"H",name:"Dossier Traite / esclavage",unit:"p.",start:0,end:300,editEnd:true,ms:[["2026-12-03",0],["2026-12-04",20],["2026-12-05",60],["2026-12-06",100],["2026-12-07",130],["2026-12-10",170],["2026-12-12",230],["2026-12-13",300]]},
+ {id:"tous",s:"H",name:"Dossier Toussaint Louverture",unit:"p.",start:0,end:300,editEnd:true,ms:[["2026-12-13",0],["2026-12-14",30],["2026-12-15",60],["2026-12-16",95],["2026-12-17",150],["2026-12-19",195],["2026-12-21",240],["2026-12-22",300]]},
+ {id:"je",s:"A",name:"Jane Eyre",unit:"ch.",start:0,end:38,ms:[["2026-11-20",0],["2026-12-10",38]]},
+ {id:"ht",s:"A",name:"The Handmaid's Tale",unit:"parties",start:0,end:15,ms:[["2026-12-13",0],["2026-12-22",15]]},
+ {id:"mont",s:"F",name:"Montaigne · « Des Cannibales »",unit:"%",start:0,end:100,ms:[["2026-11-17",0],["2026-11-18",100]]},
+ {id:"did",s:"F",name:"Diderot · Supplément au Voyage de Bougainville",unit:"%",start:0,end:100,ms:[["2026-11-18",0],["2026-11-19",100]]},
+ {id:"stael",s:"F",name:"Germaine de Staël · œuvre au programme",unit:"%",start:0,end:100,ms:[["2026-12-04",0],["2026-12-05",50],["2026-12-08",100]]}
+];
+
+/* Checklists par matière */
+const R10=(p)=>Array.from({length:10},(_,i)=>p+(i+1));
+const ITEMS={
+ M:[["Analyse · test du 4/12",["S1 · zéros, Δ, signes, inéquations (20/11)","S2 · transformations, fonctions par points (21/11)","S3 · graphes, intersections, paramètres (21/11)","S4 · définitions, pentes, dérivées (21/11)","S5 · dérivées, tangentes, variations (22/11)","S6 · série type examen + aires (22/11)","S7 · optimisation (23 et 28/11)","S8 · exponentielle (24/11)","S9 · limites, asymptotes (25-26/11)","S10 · équations exp / ln (27/11)","S11 · domaines de définition (28/11)","S12 · études complètes ln et √ (28-29/11)","S13 · division euclidienne (29/11)","S14 · asymptote oblique (30/11)","S15 · optimisation (1/12)","Série de Noël (vacances)"]],["Géométrie · test du 4/12",["S1 · vecteurs, norme, colinéarité (17/11) → à rendre jeu. 19/11","S2 · aires, produit scalaire, angle (17-18/11) → à rendre jeu. 19/11","S3 · points, aires, triangles (23 et 25/11)","S4 · droites paramétriques (28/11)","S5 (29/11)","S6 (29/11)","S7 (30/11)","S8 + fiche de concepts S1-S8 (1-2/12)"]],["Contrôles",["Analyse S6 au chrono (22/11)","Mini-examen chrono (2/12)","Test de maths (4/12)","Examen blanc maths n°1 (26/12)","Examen blanc maths n°2 (31/12)","Cahier d'erreurs à jour"]]],
+ F:[["Œuvres",["Montaigne lu (15-16/11)","Montaigne · fiche + 10 citations","Diderot lu (17-18/11)","Diderot · fiche + citations","Staël lue","Staël · fiche + citations","Tableau croisé des 3 œuvres"]],["Dissertations",["Examen « Ici et l'ailleurs » (20/11)","Dissertation chrono (6/12)","Dissertation chrono (20/12)","Examen blanc n°1 (27/12)","3 plans-types (2/01)"]]],
+ H:[["Inde 1757-1947",["L'Inde anglaise · p. 1-70","L'Inde anglaise · p. 70-117","L'Inde anglaise · p. 117-fin","Inde moderne · p. 225-294","Inde moderne · p. 295-349","Inde moderne · p. 350-437","Inde moderne · p. 438-490","Inde moderne · p. 491-551","Inde moderne · p. 552-fin","Synthèse globale 1757-1947"]],["Traite (300 p)",["p. 1-100","p. 101-200","p. 201-300","Fiche synthèse"]],["Toussaint (300 p)",["p. 1-100","p. 101-200","p. 201-300","Fiche synthèse"]],["Dissertations",["Plan Traite (29/11)","Plan + intro Traite (11/12)","Examen blanc n°1 (28/12)","Examen blanc n°2 (2/01)"]]],
+ G:[["Rattrapage",["Chapitre 1","Chapitre 2","Chapitre 3","Chapitre 4","Chapitre 5","Cours restants à jour","Synthèse globale"]],["Oraux 15 + 15",["Oral n°1 (26/11)","Oral n°2 (2/12)","Oral n°3 (12/12)","Oral n°4 (15/12)","Oral n°5 (27/12)"]],["Écrit",["Examen blanc géo (29/12)"]]],
+ A:[["Robert Frost",["Poème 1","Poème 2","Poème 3","Poème 4","Poème 5","Poème 6","Poème 7","Tableau des 7 poèmes","7 plans détaillés","Dissertation Frost (27/11)"]],["Emily Dickinson",["Poème 1","Poème 2","Poème 3","Poème 4","Synthèse + comparaison avec Frost"]],["Romans",["Jane Eyre · ch. 1-19","Jane Eyre · ch. 20-38","Fiche Jane Eyre","Essay Jane Eyre (13/12)","The Handmaid's Tale · parties I-VIII","The Handmaid's Tale · parties IX-XV + Historical Notes","Fiche The Handmaid's Tale"]],["Blancs",["Examen blanc écrit (30/12)","Oral blanc (30/12)"]]]
+};
+
+const DEADLINES=[
+ ["2026-11-18","H","Inde anglaise p. 70-117 lues (cours)",""],
+ ["2026-11-19","M","Géométrie S1 + S2 à rendre (cours de maths de 8h30)","Prêtes et relues mercredi soir."],
+ ["2026-11-19","H","Inde anglaise p. 117-fin lues (cours)",""],
+ ["2026-11-20","F","Examen écrit « Ici et l'ailleurs » · Montaigne + Diderot",""],
+ ["2026-11-22","M","Analyse S1 → S6 faites (S6 au chrono)",""],
+ ["2026-11-25","H","Inde moderne p. 225-294 · exposé sur la révolte des cipayes",""],
+ ["2026-11-26","H","Inde moderne p. 295-349",""],
+ ["2026-11-27","A","Dissertation sur les 7 poèmes de Robert Frost",""],
+ ["2026-11-29","M","Point d'étape : analyse S1-S13 + géométrie S1-S6",""],
+ ["2026-11-30","S","Reprise du sport · 1h30 par jour (sauf jeudi)",""],
+ ["2026-12-02","M","Toutes les séries faites : analyse S1-S15 + géométrie S1-S8",""],
+ ["2026-12-04","M","TEST DE MATHS · toutes les séries d'analyse + géométrie S1-S8",""],
+ ["2026-12-05","H","Inde anglaise p. 1-70 rattrapées",""],
+ ["2026-12-09","H","Inde moderne p. 350-437 · exposé sur Amritsar (1919)",""],
+ ["2026-12-10","H","Inde moderne p. 438-490",""],
+ ["2026-12-16","H","Inde moderne p. 491-551 · exposé sur la Marche du sel (1930)",""],
+ ["2026-12-23","H","Inde moderne p. 552-fin · exposé sur l'assassinat de Gandhi · dernier cours (supposé)",""],
+ ["2026-12-26","R","Début des examens blancs maison (un par jour)",""],
+ ["2027-01-04","M","EXAMEN BLANC · Maths (4h)",""],
+ ["2027-01-05","F","EXAMEN BLANC · Français (4h)",""],
+ ["2027-01-06","H","EXAMEN BLANC · Histoire (4h)",""],
+ ["2027-01-07","G","EXAMEN BLANC · Géographie (4h) + oral",""],
+ ["2027-01-08","A","EXAMEN BLANC · Anglais écrit + oral",""],
+ ["2027-01-20","H","Test de lecture géant « De l'Empire britannique au Commonwealth »","À lire à la maison, après les blancs (hors de ce plan)."]
+];
+
+/* =========================================================
+   ÉTAT + SYNCHRO
+   ========================================================= */
+const LS="prep-sprint-v2";
+const ARTIFACT_URL="https://claude.ai/artifact/VPu9YVoZ3ACVMJHtT9V4BH";
+const IN_CLAUDE=!!(window.claude&&window.claude.use);
+const EMPTY=()=>({checks:{},steps:{},notes:{},pages:{},items:{},focus:{},dl:{},updatedAt:0});
+let S=EMPTY();
+try{const o=JSON.parse(localStorage.getItem(LS)||"null");if(o)S=Object.assign(S,o);}catch(e){}
+let CFG={gistToken:"",gistId:"",repo:""};
+try{CFG=Object.assign(CFG,JSON.parse(localStorage.getItem("capsix-cfg")||"{}"));}catch(e){}
+function saveCfg(){try{localStorage.setItem("capsix-cfg",JSON.stringify(CFG))}catch(e){}}
+let dbRef=null,writing=false,dirty=false,saveTimer=null,syncMode="local",lastSync=null;
+function setSync(state,txt){const d=document.getElementById("syncDot");d.className="dot "+(state||"");document.getElementById("syncTxt").textContent=txt;if(view==="set")renderSet();}
+function adopt(r){S=Object.assign(EMPTY(),JSON.parse(JSON.stringify(r)));try{localStorage.setItem(LS,JSON.stringify(S))}catch(e){}renderAll();}
+function save(){
+  S.updatedAt=Date.now();
+  try{localStorage.setItem(LS,JSON.stringify(S))}catch(e){}
+  if(syncMode==="local")return;
+  clearTimeout(saveTimer);saveTimer=setTimeout(push,syncMode==="gist"?2000:1200);
+}
+async function push(){
+  saveTimer=null;
+  if(syncMode==="local")return;
+  if(writing){dirty=true;return;}
+  writing=true;setSync("busy","Synchronisation…");
+  try{
+    if(syncMode==="claude")await dbRef.set(JSON.parse(JSON.stringify(S)));
+    else await gistWrite();
+    lastSync=new Date();setSync("on",syncMode==="claude"?"Synchronisé · compte Claude":"Synchronisé · GitHub");
+  }catch(e){setSync("","Hors ligne · sauvegarde locale");if(e&&e.code==="invalid_argument"){dbRef=null;syncMode="local";}}
+  writing=false;
+  if(dirty){dirty=false;push();}
+}
+/* --- Synchro 1 : compte Claude (quand l'appli tourne dans Claude) --- */
+async function initClaudeSync(){
+  try{
+    const [db,user]=await Promise.all([claude.use("db"),claude.use("user")]);
+    if(!db||!user)return false;
+    const id=await user.id();if(!id)return false;
+    const ref=db.doc("data/users/"+id+"/progress");
+    let timer=setTimeout(()=>setSync("","Synchro lente · sauvegarde locale"),10000);
+    ref.onSnapshot(snap=>{
+      clearTimeout(timer);dbRef=ref;syncMode="claude";
+      if(snap.exists){const r=snap.data();
+        if(r&&r.updatedAt>S.updatedAt&&!snap.metadata.hasPendingWrites)adopt(r);
+        else if(S.updatedAt>(r&&r.updatedAt||0))push();
+      } else if(S.updatedAt)push();
+      if(!snap.metadata.fromCache){lastSync=new Date();setSync("on","Synchronisé · compte Claude");}
+    },err=>{clearTimeout(timer);setSync("","Sauvegarde locale");});
+    return true;
+  }catch(e){return false;}
+}
+/* --- Synchro 2 : GitHub Gist secret (version installée sur Mac / iPhone) --- */
+const GIST_FILE="cap-six-progress.json",GIST_DESC="Cap Six · progression (synchro Mac / iPhone)";
+const ghH=()=>({"Authorization":"Bearer "+CFG.gistToken,"Accept":"application/vnd.github+json"});
+async function gistRead(){
+  const r=await fetch("https://api.github.com/gists/"+CFG.gistId,{headers:ghH(),cache:"no-store"});
+  if(r.status===404)throw new Error("Gist introuvable");
+  if(!r.ok)throw new Error("GitHub "+r.status);
+  const j=await r.json(),f=j.files&&j.files[GIST_FILE];if(!f)return null;
+  const txt=f.truncated?await (await fetch(f.raw_url)).text():f.content;
+  try{return JSON.parse(txt)}catch(e){return null}
+}
+async function gistWrite(){
+  const r=await fetch("https://api.github.com/gists/"+CFG.gistId,{method:"PATCH",headers:Object.assign({"Content-Type":"application/json"},ghH()),body:JSON.stringify({files:{[GIST_FILE]:{content:JSON.stringify(S)}}})});
+  if(!r.ok)throw new Error("GitHub "+r.status);
+}
+async function gistConnect(token){
+  CFG.gistToken=token.trim();
+  const me=await fetch("https://api.github.com/user",{headers:ghH()});
+  if(!me.ok)throw new Error("Token refusé (vérifie qu'il est copié en entier et qu'il a la case « gist »).");
+  const list=await fetch("https://api.github.com/gists?per_page=100",{headers:ghH(),cache:"no-store"});
+  if(!list.ok)throw new Error("Le token n'a pas le droit « gist ».");
+  const gs=await list.json(),found=gs.find(g=>g.files&&g.files[GIST_FILE]);
+  if(found){CFG.gistId=found.id;}
+  else{
+    const c=await fetch("https://api.github.com/gists",{method:"POST",headers:Object.assign({"Content-Type":"application/json"},ghH()),body:JSON.stringify({description:GIST_DESC,public:false,files:{[GIST_FILE]:{content:JSON.stringify(S)}}})});
+    if(!c.ok)throw new Error("Impossible de créer le Gist (GitHub "+c.status+").");
+    CFG.gistId=(await c.json()).id;
+  }
+  saveCfg();syncMode="gist";await gistSync();
+  return found?"existing":"created";
+}
+async function gistSync(){
+  if(syncMode!=="gist"||writing||saveTimer)return;
+  try{
+    setSync("busy","Synchronisation…");
+    const r=await gistRead();
+    if(r&&r.updatedAt>S.updatedAt)adopt(r);
+    else if(!r||S.updatedAt>r.updatedAt)await gistWrite();
+    lastSync=new Date();setSync("on","Synchronisé · GitHub");
+  }catch(e){setSync("","Hors ligne · sauvegarde locale");}
+}
+function gistDisconnect(){CFG.gistToken="";CFG.gistId="";saveCfg();syncMode="local";setSync("","Sauvegarde locale (cet appareil)");}
+async function initSync(){
+  if(IN_CLAUDE&&await initClaudeSync())return;
+  if(CFG.gistToken&&CFG.gistId){
+    syncMode="gist";gistSync();initSyncTimers();
+  } else setSync("","Sauvegarde locale (cet appareil)");
+}
+
+/* =========================================================
+   OUTILS
+   ========================================================= */
+function parse(ds){const[a,b,c]=ds.split("-").map(Number);return new Date(a,b-1,c);}
+function fmt(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+function addDays(ds,n){const d=parse(ds);d.setDate(d.getDate()+n);return fmt(d);}
+function diffDays(a,b){return Math.round((parse(b)-parse(a))/864e5);}
+const J=["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"],Js=["dim.","lun.","mar.","mer.","jeu.","ven.","sam."],Mo=["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"],Ms=["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."];
+const longD=ds=>{const d=parse(ds);return J[d.getDay()]+" "+d.getDate()+" "+Mo[d.getMonth()];};
+const shortD=ds=>{const d=parse(ds);return Js[d.getDay()]+" "+d.getDate()+" "+Ms[d.getMonth()];};
+const today=()=>fmt(new Date());
+const DAYS=[];for(let d=START;d<=END;d=addDays(d,1))DAYS.push(d);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function mins(t){const m=String(t).match(/(\d{1,2})h(\d{2})\s*–\s*(\d{1,2})h(\d{2})/);if(!m)return null;return [m[1]*60+ +m[2],m[3]*60+ +m[4]];}
+function durOf(t){const m=mins(t);if(m)return m[1]-m[0];if(/Examen|4h/.test(t))return 240;return 60;}
+function ring(p,size,stroke,color,inner){const r=(size-stroke)/2,c=2*Math.PI*r;return `<svg class="ring" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}"><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--panel2)" stroke-width="${stroke}"/><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${color}" stroke-width="${stroke}" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-Math.min(1,p))}" transform="rotate(-90 ${size/2} ${size/2})"/>${inner?`<text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" fill="var(--ink)" font-family="Inter" font-weight="800" font-size="${size/4.2}">${inner}</text>`:""}</svg>`;}
+
+/* Blocs d'un jour */
+const _bc={};
+function blocks(ds){
+  if(_bc[ds])return _bc[ds];
+  const p=P[ds]||{},out=[];
+  if(p.custom){p.custom.forEach((b,i)=>out.push({id:ds+"|c"+i,t:b[0],s:b[1],ty:b[2],title:b[3],steps:(b[4]||"").split("|").filter(Boolean),chk:true,exam:b[2]==="exam"}));}
+  else tpl(ds).forEach(([k,t,lab])=>{
+    if(k==="@"){out.push({t,fixed:true,title:lab});return;}
+    if(k==="SPORT"){out.push({id:ds+"|SPORT",t,s:"S",ty:"sport",title:"Sport · 1h30",steps:["Échauffement 10 min","Séance","Étirements 5 min"],chk:true});return;}
+    if(k==="EXAM"){if(p.exam)out.push({id:ds+"|EXAM",t,s:p.exam.includes("Anglais")?"A":p.exam.includes("Maths")?"M":"F",ty:"exam",title:p.exam,steps:["Lis tout le sujet, souligne les mots-clés","Brouillon structuré avant de rédiger","Garde 15 min de relecture"],chk:true,exam:true});else out.push({t,fixed:true,title:"Examen écrit / évaluation de la semaine"});return;}
+    let v=p[k];if(v===undefined&&(k==="aller"||k==="retour"))v=commute(ds);
+    if(!v)return;
+    out.push({id:ds+"|"+k,t,s:v[0],ty:v[1],title:v[2],steps:(v[3]||"").split("|").filter(Boolean),chk:true});
+  });
+  out.forEach(b=>{if(b.chk)b.dur=durOf(b.t);});
+  return _bc[ds]=out;
+}
+function dayStats(ds){let t=0,o=0;blocks(ds).forEach(b=>{if(b.chk){t++;if(S.checks[b.id])o++;}});return{t,o,p:t?o/t:0};}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+const ICON={
+ today:'<path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="9"/>',
+ plan:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/>',
+ cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+ subj:'<path d="M4 6h16M4 12h16M4 18h10"/>',
+ read:'<path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/>',
+ dl:'<path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/>',
+ stats:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+ meth:'<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>',
+ set:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>'
+};
+const VIEWS=[["today","Aujourd'hui"],["plan","Planning"],["cal","Calendrier"],["subj","Matières"],["read","Lectures"],["dl","Échéances"],["stats","Statistiques"],["meth","Méthodes"],["set","Réglages & aide"]];
+let view="today";
+document.getElementById("navs").innerHTML=VIEWS.map(([k,l],i)=>`<button class="nav ${k===view?'on':''}" data-v="${k}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICON[k]}</svg>${l}<kbd>${i+1}</kbd></button>`).join("");
+function go(v){view=v;document.querySelectorAll(".nav").forEach(n=>n.classList.toggle("on",n.dataset.v===v));document.querySelectorAll(".view").forEach(s=>s.classList.toggle("on",s.id==="v-"+v));render(v);window.scrollTo({top:0});}
+document.getElementById("navs").addEventListener("click",e=>{const b=e.target.closest(".nav");if(b)go(b.dataset.v);});
+
+let cur=today();if(cur<START)cur=START;if(cur>END)cur=END;
+let openBlocks=new Set();
+
+/* =========================================================
+   VUE AUJOURD'HUI
+   ========================================================= */
+function phaseOf(ds){
+  const ph=[["2026-11-17","Semaine critique : géométrie S1-S2, Inde, examen de français"],["2026-11-21","Sprint analyse S1 → S6 + Frost"],["2026-11-23","Frost (27/11) + analyse S7 → S10"],["2026-11-28","Dernière ligne droite : analyse S11 → S15, géométrie S4 → S8"],["2026-12-04","Test de maths, puis Traite, Staël, Dickinson"],["2026-12-07","Inde moderne + Traite + Jane Eyre"],["2026-12-14","Toussaint + The Handmaid's Tale"],["2026-12-24","Vacances · examens blancs maison"],["2027-01-04","Semaine des examens blancs"]];
+  let r=ph[0][1];ph.forEach(p=>{if(ds>=p[0])r=p[1];});return r;
+}
+function currentBlock(ds){
+  if(ds!==today())return null;
+  const n=new Date(),m=n.getHours()*60+n.getMinutes();
+  const bs=blocks(ds).filter(b=>b.chk);
+  let now=null,next=null;
+  bs.forEach(b=>{const t=mins(b.t);if(!t)return;if(m>=t[0]&&m<t[1])now=b;else if(t[0]>m&&!next)next=b;});
+  return{now,next,m};
+}
+function streak(){
+  let s=0,d=today();if(d>END)d=END;
+  if(dayStats(d).p<.7)d=addDays(d,-1);
+  while(d>=START&&dayStats(d).p>=.7){s++;d=addDays(d,-1);}
+  return s;
+}
+function globalStats(){let t=0,o=0,tm=0,om=0;DAYS.forEach(d=>blocks(d).forEach(b=>{if(b.chk){t++;tm+=b.dur;if(S.checks[b.id]){o++;om+=b.dur;}}}));return{t,o,tm,om};}
+
+function renderToday(){
+  const ds=cur,st=dayStats(ds),g=globalStats(),isT=ds===today();
+  const cb=currentBlock(ds);
+  const jx=Math.max(0,diffDays(today(),EXAM_START));
+  let nowHTML="";
+  const target=cb&&(cb.now||cb.next);
+  if(target){
+    const t=mins(target.t),rem=cb.now?t[1]-cb.m:t[0]-cb.m,pp=cb.now?(cb.m-t[0])/(t[1]-t[0]):0;
+    nowHTML=`<div class="lab">${cb.now?"En cours":"Prochain bloc"} · ${cb.now?"reste "+rem+" min":"dans "+rem+" min"}</div><h3>${esc(target.title)}</h3><div class="meta">${SUBJ[target.s][0]} · ${target.t}</div><div class="bar"><i style="width:${pp*100}%;background:${SUBJ[target.s][1]}"></i></div><div style="margin-top:12px;display:flex;gap:8px"><button class="btn sm" data-focus="${target.id}">▶ Focus</button><button class="btn sm sec" data-tick="${target.id}">${S.checks[target.id]?"Décocher":"Marquer fait"}</button></div>`;
+  } else {
+    const first=blocks(ds).find(b=>b.chk&&!S.checks[b.id]);
+    nowHTML=`<div class="lab">${isT?"Pour l'instant":"Journée"}</div><h3>${first?esc(first.title):"Tout est coché ✓"}</h3><div class="meta">${first?SUBJ[first.s][0]+" · "+first.t:"Belle journée."}</div>${first?`<div style="margin-top:12px"><button class="btn sm" data-focus="${first.id}">▶ Focus</button></div>`:""}`;
+  }
+  const bs=blocks(ds);
+  let tl="",lineDone=!isT;
+  const nowM=isT?new Date().getHours()*60+new Date().getMinutes():null;
+  bs.forEach(b=>{
+    const t=mins(b.t);
+    if(!lineDone&&t&&t[0]>nowM){tl+=`<div class="nowline"></div>`;lineDone=true;}
+    if(b.fixed){tl+=`<div class="fixed"><div class="t">${b.t.split("–")[0]}</div><div class="f">${esc(b.title)}</div></div>`;return;}
+    const done=!!S.checks[b.id],isNow=cb&&cb.now===b,open=openBlocks.has(b.id);
+    const sd=b.steps.filter((x,i)=>S.steps[b.id+"#"+i]).length;
+    tl+=`<div class="blk" id="b-${cssId(b.id)}"><div class="t">${b.t.split("–")[0]}</div>
+      <div class="bcard ${done?'done':''} ${isNow?'now':''} ${b.exam?'exam':''} ${open?'open':''}" style="--c:${SUBJ[b.s][1]}">
+        <div class="rail"></div>
+        <div class="bbody" data-open="${b.id}">
+          <div class="btitle">${esc(b.title)}</div>
+          <div class="bsub"><span class="tchip">${SUBJ[b.s][0]}</span><span class="type">${TYPES[b.ty]||""}</span><span>${b.t}</span>${b.steps.length?`<span>· ${sd}/${b.steps.length} étapes</span>`:""}</div>
+          ${b.steps.length?`<ul class="steps">${b.steps.map((x,i)=>`<li class="${S.steps[b.id+'#'+i]?'done':''}"><input type="checkbox" class="mini" data-step="${b.id}#${i}" ${S.steps[b.id+'#'+i]?'checked':''}><span>${esc(x)}</span></li>`).join("")}</ul>`:""}
+        </div>
+        <div class="bact"><button class="iconbtn" title="Focus" data-focus="${b.id}" style="width:30px;height:30px">▶</button><input type="checkbox" class="chk" data-tick="${b.id}" ${done?'checked':''}></div>
+      </div></div>`;
+  });
+  if(!lineDone)tl+=`<div class="nowline"></div>`;
+  // subject minutes of the day
+  const per={};bs.forEach(b=>{if(b.chk){per[b.s]=per[b.s]||[0,0];per[b.s][0]+=b.dur;if(S.checks[b.id])per[b.s][1]+=b.dur;}});
+  const fm=Object.entries(S.focus).filter(([k])=>k.startsWith(ds)).reduce((a,[,v])=>a+v,0);
+  document.getElementById("v-today").innerHTML=`
+  <div class="top"><div><h1>${longD(ds)}${isT?"":""}</h1><p>${phaseOf(ds)}${isT?" · aujourd'hui":""}</p></div>
+   <div class="daynav"><button class="iconbtn" data-nav="-1" title="Veille (←)">‹</button><button class="ghost" data-nav="0">Aujourd'hui</button><button class="iconbtn" data-nav="1" title="Lendemain (→)">›</button></div></div>
+  <div class="hero">
+   <div class="card nowcard">${nowHTML}</div>
+   <div class="card kpi">${ring(st.p,64,7,"var(--ink)",Math.round(st.p*100)+"%")}<div><b>${st.o}/${st.t}</b><span>blocs cochés ce jour</span></div></div>
+   <div class="card kpi">${ring(g.o/g.t,64,7,"var(--A)",Math.round(g.o/g.t*100)+"%")}<div><b>${Math.round(g.om/60)} h</b><span>faites sur ${Math.round(g.tm/60)} h prévues</span></div></div>
+   <div class="card kpi"><div style="font-size:30px">🔥</div><div><b>${streak()} j</b><span>série (≥ 70 % du jour) · J-${jx} avant les blancs</span></div></div>
+  </div>
+  <div class="layout2">
+   <div class="timeline">${tl}</div>
+   <div class="side">
+    <div class="card pad"><h4>Répartition du jour</h4>${Object.entries(per).map(([s,[t,o]])=>`<div class="subjrow" style="--c:${SUBJ[s][1]}"><span class="sw"></span>${SUBJ[s][0]}<span class="v">${Math.round(o/60*10)/10} / ${Math.round(t/60*10)/10} h</span></div><div class="bar"><i style="width:${o/t*100}%;background:${SUBJ[s][1]}"></i></div>`).join("")}<div class="subjrow" style="margin-top:8px"><span>⏱ Focus chronométré</span><span class="v">${fm} min</span></div></div>
+    <div class="card pad"><h4>Notes du jour</h4><textarea id="note" placeholder="Ce qui a bloqué, ce qu'il faut revoir, questions pour le prof…">${esc(S.notes[ds]||"")}</textarea></div>
+    <div class="card pad"><h4>Règles du jour</h4><div style="font-size:13px;color:var(--mute);line-height:1.6">Blocs de 50 min, 10 min de pause · téléphone dans une autre pièce · à la fin de chaque bloc, explique la notion 3 min à voix haute · coucher 22h30–22h45.</div></div>
+   </div>
+  </div>`;
+}
+const cssId=id=>id.replace(/[^a-zA-Z0-9]/g,"_");
+
+/* =========================================================
+   VUE PLANNING (semaine)
+   ========================================================= */
+const WEEKS=[];{let m=addDays(START,-((parse(START).getDay()+6)%7));while(m<=END){WEEKS.push(m);m=addDays(m,7);}}
+let wk=null;
+function weekOf(ds){let r=WEEKS[0];WEEKS.forEach(w=>{if(ds>=w)r=w;});return r;}
+function renderPlan(){
+  if(!wk)wk=weekOf(cur);
+  const pills=WEEKS.map((w,i)=>{let t=0,o=0;for(let k=0;k<7;k++){const d=addDays(w,k);if(d<START||d>END)continue;const s=dayStats(d);t+=s.t;o+=s.o;}return `<button class="wpill ${w===wk?'on':''}" data-wk="${w}"><b>Semaine ${i}</b><span>${parse(w).getDate()} ${Ms[parse(w).getMonth()]} · ${t?Math.round(o/t*100):0} %</span></button>`;}).join("");
+  let cols="";
+  for(let k=0;k<7;k++){
+    const d=addDays(wk,k),out=d<START||d>END,st=out?{p:0}:dayStats(d);
+    cols+=`<div class="wcol ${d===today()?'today':''} ${out?'out':''}"><div class="whead" data-day="${d}"><div><b>${Js[parse(d).getDay()]} ${parse(d).getDate()}</b><br><span>${out?"—":Math.round(st.p*100)+" %"}</span></div>${out?"":ring(st.p,30,4,"var(--ink)")}</div>${out?"":blocks(d).filter(b=>b.chk).map(b=>`<div class="wchip ${S.checks[b.id]?'done':''}" style="--c:${SUBJ[b.s][1]}" data-jump="${b.id}"><input type="checkbox" class="mini" data-tick="${b.id}" ${S.checks[b.id]?'checked':''}><span><b style="font-weight:600;color:var(--mute)">${b.t.split("–")[0]}</b> ${esc(b.title)}</span></div>`).join("")}</div>`;
+  }
+  document.getElementById("v-plan").innerHTML=`<div class="top"><div><h1>Planning</h1><p>Clique sur un jour pour l'ouvrir, sur une case pour cocher.</p></div></div><div class="weekbar">${pills}</div><div class="week">${cols}</div>`;
+}
+
+/* =========================================================
+   VUE CALENDRIER
+   ========================================================= */
+function heat(p){if(p<=0)return "var(--panel2)";return `color-mix(in srgb, var(--G) ${Math.round(15+p*75)}%, var(--panel2))`;}
+function renderCal(){
+  const months=[[2026,10],[2026,11],[2027,0]];
+  const dlBy={};DEADLINES.forEach(d=>{(dlBy[d[0]]=dlBy[d[0]]||[]).push(d);});
+  const html=months.map(([y,m])=>{
+    const first=new Date(y,m,1),off=(first.getDay()+6)%7,n=new Date(y,m+1,0).getDate();
+    let cells=["L","M","M","J","V","S","D"].map(x=>`<div class="dh">${x}</div>`).join("");
+    for(let i=0;i<off;i++)cells+=`<div class="cell none"></div>`;
+    for(let d=1;d<=n;d++){const ds=fmt(new Date(y,m,d)),inR=ds>=START&&ds<=END;const st=inR?dayStats(ds):null;
+      cells+=`<div class="cell ${inR?'':'none'} ${ds===today()?'today':''}" ${inR?`data-day="${ds}" title="${shortD(ds)} · ${Math.round(st.p*100)} %"`:""} style="${inR?`background:${heat(st.p)}`:""}"><span>${d}</span><span class="dl">${(dlBy[ds]||[]).map(x=>`<i style="--c:${SUBJ[x[1]][1]}"></i>`).join("")}</span></div>`;}
+    return `<div class="card pad month"><h3>${Mo[m][0].toUpperCase()+Mo[m].slice(1)} ${y}</h3><div class="cal">${cells}</div></div>`;
+  }).join("");
+  document.getElementById("v-cal").innerHTML=`<div class="top"><div><h1>Calendrier</h1><p>Plus c'est vert, plus la journée est cochée. Les points marquent les échéances.</p></div></div><div class="months">${html}</div>`;
+}
+
+/* =========================================================
+   VUE MATIÈRES
+   ========================================================= */
+function renderSubj(){
+  const html=Object.entries(ITEMS).map(([s,secs])=>{
+    let t=0,o=0;secs.forEach(([n,its],si)=>its.forEach((x,i)=>{t++;if(S.items[s+si+"_"+i])o++;}));
+    let pt=0,po=0;DAYS.forEach(d=>blocks(d).forEach(b=>{if(b.chk&&b.s===s){pt+=b.dur;if(S.checks[b.id])po+=b.dur;}}));
+    return `<div class="card pad"><div class="sh">${ring(o/t,58,7,SUBJ[s][1],Math.round(o/t*100)+"%")}<div><h3>${SUBJ[s][0]}</h3><span>${o}/${t} objectifs · ${Math.round(po/60)} / ${Math.round(pt/60)} h de blocs</span></div></div>
+    ${secs.map(([n,its],si)=>`<div class="secT">${n}</div>${its.map((x,i)=>{const k=s+si+"_"+i;return `<label class="it ${S.items[k]?'done':''}" style="--c:${SUBJ[s][1]}"><input type="checkbox" class="mini" data-item="${k}" ${S.items[k]?'checked':''}><span>${esc(x)}</span></label>`;}).join("")}`).join("")}</div>`;
+  }).join("");
+  document.getElementById("v-subj").innerHTML=`<div class="top"><div><h1>Matières</h1><p>Les gros morceaux du retard, à cocher quand c'est vraiment acquis.</p></div></div><div class="subjgrid">${html}</div>`;
+}
+
+/* =========================================================
+   VUE LECTURES
+   ========================================================= */
+function rEnd(r){return +(S.pages[r.id+"_end"]||r.end);}
+function targetOf(r,ds){
+  const pts=r.ms.map(([d,v])=>[d,v==="end"?rEnd(r):v]);
+  if(ds<pts[0][0])return r.start;
+  for(let i=0;i<pts.length-1;i++){const[a,va]=pts[i],[b,vb]=pts[i+1];if(ds>=a&&ds<=b){const f=diffDays(a,ds)/Math.max(1,diffDays(a,b));return Math.round(va+(vb-va)*f);}}
+  return pts[pts.length-1][1];
+}
+function renderRead(){
+  const t=today()<START?START:today();
+  const html=READS.map(r=>{
+    const end=rEnd(r),curv=+(S.pages[r.id]??r.start),tg=targetOf(r,t),span=end-r.start;
+    const diff=curv-tg;
+    const st=diff>=0?(diff>0?`<span class="st ahead">+${diff} ${r.unit} d'avance</span>`:`<span class="st ok">À jour ✓</span>`):`<span class="st late">${diff} ${r.unit} de retard</span>`;
+    const pc=span?(curv-r.start)/span:0,tp=span?(tg-r.start)/span:0;
+    const msHTML=r.ms.filter(m=>m[1]!==r.start&&m[1]!==0).map(([d,v])=>`<span class="${d<t?'past':''}">${shortD(d)} → ${v==="end"?"fin":r.unit+" "+v}</span>`).join("");
+    return `<div class="card pad rd" style="--c:${SUBJ[r.s][1]}"><div class="top2"><div><span class="tchip" style="--c:${SUBJ[r.s][1]}">${SUBJ[r.s][0]}</span><h3 style="margin-top:6px">${esc(r.name)}</h3></div>${st}</div>
+    <div class="nums"><div><b>${curv}</b>atteint</div><div><b>${tg}</b>objectif aujourd'hui</div><div><b>${Math.max(0,end-curv)}</b>restant</div></div>
+    <div class="track"><i style="width:${pc*100}%"></i><em style="left:calc(${tp*100}% - 1px)" title="Objectif du jour"></em></div>
+    <input type="range" min="${r.start}" max="${end}" value="${curv}" data-read="${r.id}" style="margin-top:12px">
+    <div class="ctrl"><button class="ghost" data-rstep="${r.id}|-5">−5</button><button class="ghost" data-rstep="${r.id}|-1">−1</button><input type="number" value="${curv}" data-read="${r.id}"><button class="ghost" data-rstep="${r.id}|1">+1</button><button class="ghost" data-rstep="${r.id}|5">+5</button>${r.editEnd?`<span style="margin-left:auto;font-size:12px;color:var(--mute)">Dernière page <input type="number" value="${end}" data-rend="${r.id}"></span>`:""}</div>
+    ${r.note?`<div style="font-size:11.5px;color:var(--mute);margin-top:10px">${esc(r.note)}</div>`:""}
+    <div class="ms">${msHTML}</div></div>`;
+  }).join("");
+  document.getElementById("v-read").innerHTML=`<div class="top"><div><h1>Lectures</h1><p>Mets à jour la page atteinte : l'objectif du jour suit le calendrier PrEP et le plan. Le trait blanc = où tu devrais être.</p></div></div><div class="note">Pour les dossiers dont tu ne connais pas encore la dernière page, saisis-la dans « Dernière page » : les objectifs se recalculent.</div><div class="reads">${html}</div>`;
+}
+
+/* =========================================================
+   VUE ÉCHÉANCES
+   ========================================================= */
+function renderDl(){
+  const t=today();
+  const rows=DEADLINES.slice().sort((a,b)=>a[0]<b[0]?-1:1).map((d,i)=>{
+    const k="dl"+d[0]+d[2].slice(0,12),j=diffDays(t,d[0]),done=S.dl[k];
+    return `<div class="dline ${j<0||done?'past':''}"><div class="when">${shortD(d[0])}</div><div class="j ${j>=0&&j<=3&&!done?'soon':''}">${j<0?"passé":j===0?"auj.":"J-"+j}</div><div><span class="tchip" style="--c:${SUBJ[d[1]][1]}">${SUBJ[d[1]][0]}</span> <b>${esc(d[2])}</b>${d[3]?`<div style="font-size:12px;color:var(--mute);margin-top:3px">${esc(d[3])}</div>`:""}</div><input type="checkbox" class="chk" style="--c:var(--ok)" data-dl="${k}" ${done?'checked':''}></div>`;
+  }).join("");
+  document.getElementById("v-dl").innerHTML=`<div class="top"><div><h1>Échéances</h1><p>Coche quand c'est rendu ou passé.</p></div></div><div class="note">Hypothèses à vérifier : derniers cours le mercredi 23 décembre (la lecture de l'Inde est prévue ce jour-là), vacances du 24 décembre au 3 janvier. Géométrie S5 à S8 : contenu exact à confirmer (je n'ai pas encore les énoncés).</div><div class="card">${rows}</div>`;
+}
+
+/* =========================================================
+   VUE STATISTIQUES
+   ========================================================= */
+function renderStats(){
+  const g=globalStats(),t=today();
+  const fm=Object.values(S.focus).reduce((a,b)=>a+b,0);
+  let best=null;DAYS.forEach(d=>{const s=dayStats(d);if(s.o&&(!best||s.p>best[1]))best=[d,s.p];});
+  // per-subject bars
+  const per={};DAYS.forEach(d=>blocks(d).forEach(b=>{if(b.chk&&b.s!=="R"){per[b.s]=per[b.s]||[0,0];per[b.s][0]+=b.dur;if(S.checks[b.id])per[b.s][1]+=b.dur;}}));
+  const maxT=Math.max(...Object.values(per).map(v=>v[0]));
+  const bars=Object.entries(per).map(([s,[tt,o]])=>`<div style="display:grid;grid-template-columns:90px 1fr 90px;gap:10px;align-items:center;margin:8px 0;font-size:13px"><span>${SUBJ[s][0]}</span><div style="height:12px;background:var(--panel2);border-radius:6px;position:relative;width:${tt/maxT*100}%"><i style="position:absolute;inset:0;width:${o/tt*100}%;background:${SUBJ[s][1]};border-radius:6px"></i></div><span style="color:var(--mute);text-align:right;font-variant-numeric:tabular-nums">${Math.round(o/60)} / ${Math.round(tt/60)} h</span></div>`).join("");
+  // last 21 days chart
+  const days=[];let d=t>END?END:t;for(let i=20;i>=0;i--){const x=addDays(d,-i);if(x>=START)days.push(x);}
+  const W=640,H=160,bw=W/Math.max(days.length,1);
+  const svg=`<svg class="chart" viewBox="0 0 ${W} ${H+24}">${[0,.5,1].map(y=>`<line x1="0" x2="${W}" y1="${H-y*H}" y2="${H-y*H}" stroke="var(--line)"/>`).join("")}${days.map((x,i)=>{const p=dayStats(x).p;return `<rect x="${i*bw+4}" y="${H-p*H}" width="${bw-8}" height="${Math.max(2,p*H)}" rx="4" fill="${p>=.7?'var(--G)':p>0?'var(--H)':'var(--panel2)'}"><title>${shortD(x)} · ${Math.round(p*100)} %</title></rect><text x="${i*bw+bw/2}" y="${H+16}" text-anchor="middle" font-size="10" fill="var(--mute)">${parse(x).getDate()}</text>`;}).join("")}</svg>`;
+  document.getElementById("v-stats").innerHTML=`<div class="top"><div><h1>Statistiques</h1><p>Ce que tu as réellement fait.</p></div></div>
+  <div class="stats">
+   <div class="card kpi">${ring(g.o/g.t,58,7,"var(--ink)",Math.round(g.o/g.t*100)+"%")}<div><b>${g.o}</b><span>blocs cochés sur ${g.t}</span></div></div>
+   <div class="card kpi"><div><b>${Math.round(g.om/60)} h</b><span>de blocs faits</span></div></div>
+   <div class="card kpi"><div><b>${Math.round(fm/60*10)/10} h</b><span>en mode focus chronométré</span></div></div>
+   <div class="card kpi"><div><b>🔥 ${streak()} j</b><span>série · meilleur jour : ${best?shortD(best[0])+" ("+Math.round(best[1]*100)+" %)":"—"}</span></div></div>
+  </div>
+  <div class="grid" style="grid-template-columns:1fr 1fr">
+   <div class="card pad"><h4 style="margin:0 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)">Heures par matière (faites / prévues)</h4>${bars}</div>
+   <div class="card pad"><h4 style="margin:0 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)">Complétion des 21 derniers jours</h4>${svg}<div style="font-size:12px;color:var(--mute)">Vert ≥ 70 % · orange = commencé</div></div>
+  </div>`;
+}
+
+/* =========================================================
+   VUE MÉTHODES
+   ========================================================= */
+function renderMeth(){
+ document.getElementById("v-meth").innerHTML=`<div class="top"><div><h1>Méthodes</h1><p>Comment travailler chaque bloc pour viser 6/6.</p></div></div>
+ <div class="note"><b>Réalisme.</b> 6/6 partout, c'est le plafond, et ce plan est construit pour l'atteindre. Le volume reste énorme : analyse 1→10, géométrie 1→10, environ 1 200 pages d'histoire, 4 œuvres en anglais, 3 en français. La clé n'est pas de tout lire, c'est de tout <i>traiter activement</i>. Si tu prends un jour de retard, ne décale pas tout : saute le bloc le moins urgent de la semaine et garde les échéances.</div>
+ <div class="card">
+ <details class="acc" open><summary>⚡ Règles d'or</summary><div class="in"><ul>
+  <li><b>50 min de travail / 10 min de pause</b>, téléphone dans une autre pièce. Utilise le bouton ▶ Focus.</li>
+  <li><b>Méthode orale (ta force)</b> : à la fin de chaque bloc, explique la notion 3 min à voix haute comme devant un amphi. Enregistre-toi et réécoute-toi dans les trajets.</li>
+  <li><b>Rappel actif plutôt que relecture</b> : ferme le cours, écris ou dis ce que tu sais, puis vérifie. Flashcards (Anki) pour les dates, citations et formules.</li>
+  <li><b>Cahier d'erreurs</b> : chaque erreur est refaite à J+3 puis à J+7.</li>
+  <li><b>Sommeil</b> : 7h45 minimum. La mémoire consolide pendant la nuit, un coucher tardif coûte plus qu'il ne rapporte.</li>
+  <li><b>Bilan du dimanche</b> : coche, repère le retard, ajuste. Soirée du dimanche libre.</li></ul></div></details>
+ <details class="acc"><summary>📚 Lire 1 200 pages d'histoire sans tout lire mot à mot</summary><div class="in">
+  <p>1. <b>Survol (5 min)</b> : sommaire, titres, introduction et conclusion de la tranche.</p>
+  <p>2. <b>Lecture active</b> : crayon en main, tu ne surlignes que les dates, acteurs, chiffres et causes/conséquences.</p>
+  <p>3. <b>Fiche d'une page par tranche de 40-50 p.</b> : chronologie, acteurs, notions, 3 idées-forces.</p>
+  <p>4. <b>Rappel oral</b> : raconte la tranche en 3 min sans regarder.</p>
+  <p>Rythme visé : 20-25 p/heure. Pour l'Inde, la fiche est relue le matin même du cours (évaluations hebdomadaires).</p></div></details>
+ <details class="acc"><summary><span class="tchip" style="--c:var(--F)">Français</span> Dissertation (4h)</summary><div class="in">
+  <p><b>0h00–0h20</b> : analyse du sujet (mots-clés définis, présupposés, tension) → <b>problématique</b> sous forme de question.</p>
+  <p><b>0h20–1h00</b> : plan détaillé au brouillon : 2 ou 3 parties, 2-3 sous-parties, chaque argument appuyé sur un exemple précis (citation + analyse).</p>
+  <p><b>1h00–3h40</b> : rédaction. Introduction : accroche, sujet cité et reformulé, problématique, annonce. Transitions. Conclusion : bilan, réponse nette, ouverture.</p>
+  <p><b>3h40–4h00</b> : relecture (accords, orthographe, titres d'œuvres).</p>
+  <p><b>Plans</b> : dialectique (thèse / antithèse / dépassement), thématique, analytique.</p>
+  <p><b>« Ici et l'ailleurs »</b> : l'ailleurs comme miroir critique de l'ici (Montaigne, Diderot) ; idéalisation vs regard lucide ; relativisme culturel ; formes littéraires au service de la critique (essai, dialogue philosophique).</p></div></details>
+ <details class="acc"><summary><span class="tchip" style="--c:var(--H)">Histoire</span> Dissertation en 2 parties</summary><div class="in">
+  <p><b>Introduction</b> : contexte, définitions, bornes chronologiques et spatiales, problématique (souvent donnée : reformule-la), annonce des 2 parties.</p>
+  <p><b>Développement</b> : 2 parties équilibrées, 2-3 sous-parties. Chaque paragraphe : idée → faits datés, acteurs, chiffres → explication → mini-bilan relié à la problématique.</p>
+  <p><b>Conclusion</b> : réponse claire + ouverture.</p>
+  <p><b>Ce qui fait un 6</b> : précision (dates, noms, chiffres), nuance, lien constant avec la problématique. Pour chaque dossier, prépare 4-5 problématiques probables avec leur plan.</p>
+  <p><b>Inde 1757-1947, repères</b> : Plassey (1757) · Compagnie des Indes · révolte des cipayes (1857) et passage à la Couronne (1858) · Congrès national indien (1885) · Amritsar (1919) · Gandhi et la non-coopération · Marche du sel (1930) · indépendance et partition (1947) · assassinat de Gandhi (30.1.1948).</p></div></details>
+ <details class="acc"><summary><span class="tchip" style="--c:var(--A)">Anglais</span> Literary essay</summary><div class="in">
+  <p><b>Introduction</b> : contexte (auteur, époque), résumé bref, <b>thesis statement</b> qui répond au sujet, annonce.</p>
+  <p><b>Paragraphes PEAL</b> : <b>P</b>oint → <b>E</b>vidence (citation courte) → <b>A</b>nalysis (mots, images, forme) → <b>L</b>ink à la thèse.</p>
+  <p><b>Poésie</b> : speaker, tone, imagery, structure, rhyme et meter. Frost : vers réguliers, langage simple et ambiguïté, nature comme miroir des choix humains. Dickinson : tirets, majuscules, rimes imparfaites (slant rhyme), common meter ; mort, foi, intériorité.</p>
+  <p><b>Par poème, prépare</b> : 3 thèmes, 5 citations, 3 procédés formels, 1 lecture alternative.</p>
+  <p><b>Romans</b> : intrigue par partie, arcs des personnages, 4 thèmes, 15 citations, contexte (Jane Eyre : 1847, roman victorien ; The Handmaid's Tale : 1985, dystopie).</p></div></details>
+ <details class="acc"><summary><span class="tchip" style="--c:var(--G)">Géo</span> / <span class="tchip" style="--c:var(--A)">Anglais</span> Oral 15 min de prépa + 15 min</summary><div class="in">
+  <p><b>Prépa</b> : 2 min pour comprendre le sujet et poser la problématique, 10 min de plan en mots-clés (jamais de phrases rédigées), 3 min pour écrire l'intro et la conclusion.</p>
+  <p><b>Passage</b> : intro 2 min → I 5 min → II 5 min → conclusion 2 min. Regarde le jury, parle lentement.</p>
+  <p>Toujours au minuteur et enregistré, puis réécouté.</p></div></details>
+ <details class="acc" open><summary><span class="tchip" style="--c:var(--M)">Maths</span> Test du 4 décembre · tout ce qu'il faut savoir faire</summary><div class="in">
+  <p><b>Analyse</b></p><ul>
+  <li><b>S1</b> : zéros (affine, Δ, mise en évidence, produit nul), tableau de signes, inéquations.</li>
+  <li><b>S2</b> : transformations (−g, g(−x), |g|, 2−f, f+g, f·g) ; affine par 2 points, parabole par 3 points ; intersections.</li>
+  <li><b>S3</b> : tracer des graphes, intersections f = g, paramètre → condition sur Δ (Δ = 0 : un seul point ; Δ &lt; 0 : aucun).</li>
+  <li><b>S4</b> : définitions exactes (zéro, intersection, pente, tangente, dérivée), pentes lues, dérivées de polynômes.</li>
+  <li><b>S5</b> : dérivées produit / quotient, tangente y = f'(a)(x−a) + f(a), points où f' = k, tableau de variation.</li>
+  <li><b>S6</b> : série complète type examen : intersections, signe, tangente, aire = F(b) − F(a), équation depuis un graphe, paramètres.</li>
+  <li><b>S7 / S15</b> : optimisation : inconnues → contrainte → fonction d'une variable → f' = 0 → tableau → phrase de conclusion.</li>
+  <li><b>S8</b> : (eˣ)' = eˣ, (e^u)' = u'e^u ; tangentes horizontales ; inflexion (f'' = 0) ; primitive vérifiée par F' = f ; aire.</li>
+  <li><b>S9</b> : limites de eˣ en ±∞, asymptote horizontale, aire entre deux courbes.</li>
+  <li><b>S10</b> : eˣ = a ⇔ x = ln a ; ln x = b ⇔ x = eᵇ ; tangentes à ln ; primitive x(ln x − 1) ; modèle de refroidissement.</li>
+  <li><b>S11</b> : domaines (ln u : u &gt; 0 ; 1/u : u ≠ 0 ; √u : u ≥ 0) et asymptotes verticales.</li>
+  <li><b>S12</b> : (ln u)' = u'/u, (√u)' = u'/(2√u) ; étude complète d'une fonction (le type d'exercice de l'examen final).</li>
+  <li><b>S13</b> : division euclidienne, reste de P par (x − a) = P(a), paramètres.</li>
+  <li><b>S14</b> : asymptote oblique y = ax + b par division euclidienne.</li></ul>
+  <p><b>Géométrie</b></p><ul>
+  <li><b>S1</b> : norme √(a₁² + a₂²), colinéarité b = λa (même sens si λ &gt; 0), combinaisons linéaires.</li>
+  <li><b>S2</b> : aire du parallélogramme |a₁b₂ − a₂b₁| (triangle : moitié), produit scalaire a₁b₁ + a₂b₂, perpendicularité, angle par cos θ.</li>
+  <li><b>S3</b> : points (colinéarité + norme imposée), aire d'un triangle, division d'un segment, carré, triangle rectangle par produit scalaire.</li>
+  <li><b>S4</b> : droite paramétrique x = a₁ + k·d₁, y = a₂ + k·d₂ : appartenance, intersections avec les axes, parallèle, milieu.</li>
+  <li><b>S5 à S8</b> : à compléter dès que tu m'envoies les énoncés.</li></ul></div></details>
+ <details class="acc"><summary><span class="tchip" style="--c:var(--M)">Maths</span> Séries + checklist de l'examen 0</summary><div class="in">
+  <ol><li>Théorie : cours + une vidéo (Yvan Monka) sur la notion.</li><li>Exercices <b>sans</b> corrigé, chaque étape écrite.</li><li>Correction → cahier d'erreurs.</li><li>Refais les ratés à J+3 et J+7.</li></ol>
+  <p><b>Checklist</b> : zéro de f (f(x) = 0) · parité (f(−x) vs f(x)) · pente et abscisse à l'origine · inéquation (on inverse le sens en multipliant par un négatif) · factorisation d'une cubique (mise en évidence de x puis Δ) · tableau de signes · dérivée · tangente y = f'(a)(x−a) + f(a) · intersection avec paramètre (f = g ; « un seul point » ⇔ Δ = 0) · transformations (1−f, f(−x), |f|, f+g, f·g) · retrouver f depuis un graphe (zéros, multiplicités, un point pour trouver a).</p>
+  <details><summary style="cursor:pointer;font-weight:700">Corrigé ex. 1 à 3 · à ouvrir seulement après le 21/11</summary>
+  <p><b>Ex. 1</b> : 1) les x tels que f(x) = 0. 2) g(−x) = −2x² + 2 = g(x) → <b>paire</b>. 5) −(x−2) &lt; −3 ⇔ −x + 2 &lt; −3 ⇔ −x &lt; −5 ⇔ <b>x &gt; 5</b>.</p>
+  <p><b>Ex. 2</b> : f(x) = 2x(x² − 3x + 2) = 2x(x−1)(x−2) → zéros (0;0), (1;0), (2;0). Signes : − sur ]−∞;0[, + sur ]0;1[, − sur ]1;2[, + sur ]2;+∞[. f'(x) = 6x² − 12x + 4. f(1) = 0, f'(1) = −2 → tangente <b>y = −2x + 2</b>.</p>
+  <p><b>Ex. 3</b> : f(x) = g(x) ⇔ −4x² + (6−k)x − 1 = 0. Un seul point ⇔ Δ = (6−k)² − 16 = 0 ⇔ <b>k = 2 ou k = 10</b>. k = 2 : x = 1/2, point (0,5 ; 1,75). k = 10 : x = −1/2, point (−0,5 ; −4,75).</p></details></div></details>
+ </div>`;
+}
+
+/* =========================================================
+   VUE RÉGLAGES & AIDE
+   ========================================================= */
+function lateBlocks(){const t=today(),out=[];DAYS.filter(d=>d<t&&d>=addDays(t,-7)).forEach(d=>blocks(d).forEach(b=>{if(b.chk&&b.s!=="R"&&b.ty!=="audio"&&b.ty!=="sport"&&!S.checks[b.id])out.push(shortD(d)+" · "+SUBJ[b.s][0]+" · "+b.title);}));return out;}
+function claudePrompt(req){
+  const g=globalStats(),late=lateBlocks(),t=today();
+  const reads=READS.map(r=>`${r.name} : ${S.pages[r.id]??r.start}/${rEnd(r)} ${r.unit} (objectif du jour ${targetOf(r,t<START?START:t)})`).join("\n- ");
+  return `Modifie mon appli Cap Six.
+- Artefact : ${ARTIFACT_URL}${CFG.repo?`\n- Dépôt GitHub : ${CFG.repo} (mets aussi à jour index.html dans le dépôt et pousse le commit)`:""}
+- Aujourd'hui : ${longD(t)}
+- Progression globale : ${g.o}/${g.t} blocs (${Math.round(g.o/g.t*100)} %)
+- Blocs non faits ces 7 derniers jours (${late.length}) :${late.length?"\n  · "+late.slice(0,40).join("\n  · "):" aucun"}
+- Lectures :
+- ${reads}
+
+Ma demande : ${req||"(à compléter)"}`;
+}
+function renderSet(){
+  const el=document.getElementById("v-set");if(!el)return;
+  const mode=syncMode==="claude"?["on","Compte Claude","Ta progression est enregistrée dans ton compte Claude et partagée entre tous tes appareils où tu ouvres l'appli depuis Claude."]:syncMode==="gist"?["on","GitHub (Gist secret)","Ta progression est copiée dans un Gist secret de ton compte GitHub. Mets le même token sur ton Mac et ton iPhone : ils restent synchronisés."]:["","Cet appareil seulement","Rien n'est partagé entre tes appareils pour l'instant."];
+  const prev=document.getElementById("askTxt");const askVal=prev?prev.value:"";
+  el.innerHTML=`<div class="top"><div><h1>Réglages & aide</h1><p>Synchronisation, installation sur Mac / iPhone, et comment demander des modifications à Claude.</p></div></div>
+  <div class="setgrid">
+   <div class="card pad"><h3>🔄 Synchronisation</h3>
+    <p><span class="badge" style="color:${mode[0]?'var(--ok)':'var(--mute)'}">● ${mode[1]}</span>${lastSync?` · dernière synchro ${String(lastSync.getHours()).padStart(2,"0")}h${String(lastSync.getMinutes()).padStart(2,"0")}`:""}</p>
+    <p>${mode[2]}</p>
+    ${IN_CLAUDE?`<p>Tu utilises la version Claude : rien à régler. La version installée depuis GitHub peut se synchroniser avec un Gist (voir le mode d'emploi).</p>`:
+    syncMode==="gist"?`<div class="row2"><button class="btn sm" id="gSync">Synchroniser maintenant</button><button class="btn sm sec" id="gOff">Déconnecter cet appareil</button></div>`:
+    `<div class="field"><label>Token GitHub (droit « gist » uniquement)</label><input id="gTok" type="password" placeholder="ghp_…" autocomplete="off"></div>
+     <div class="row2"><button class="btn sm" id="gOn">Activer la synchro Mac ↔ iPhone</button><span id="gMsg" style="font-size:12px;color:var(--mute)"></span></div>
+     <p style="font-size:12px">Sur le 2e appareil, colle le même token : l'appli retrouve toute seule ta progression.</p>`}
+   </div>
+   <div class="card pad"><h3>💬 Demander une modification à Claude</h3>
+    <p>Écris ce que tu veux changer. Le bouton copie un message complet (ta progression, tes retards de la semaine, les liens) à coller dans une conversation Claude.</p>
+    <div class="field"><textarea id="askTxt" rows="4" placeholder="Ex. : j'ai raté mardi soir, replanifie la semaine · ajoute la géométrie S5 que je t'envoie · décale le sport à 7h">${esc(askVal)}</textarea></div>
+    <div class="row2"><button class="btn sm" id="askCopy">Copier le message pour Claude</button><a class="btn sm sec" href="https://claude.ai/new" target="_blank" rel="noopener" style="text-decoration:none">Ouvrir Claude</a></div>
+    <div class="field"><label>Mon dépôt GitHub (facultatif, ex. pseudo/cap-six)</label><input id="repoIn" value="${esc(CFG.repo)}" placeholder="pseudo/cap-six"></div>
+   </div>
+   <div class="card pad"><h3>💾 Sauvegarde manuelle</h3>
+    <p>Copie toute ta progression (cases, notes, pages) pour la garder ou la transférer à la main.</p>
+    <div class="row2"><button class="btn sm sec" id="expCopy">Copier ma progression</button></div>
+    <div class="field"><label>Importer (colle ici une progression copiée)</label><textarea id="impTxt" rows="3" placeholder='{"checks":{…}}'></textarea></div>
+    <div class="row2"><button class="btn sm sec" id="impGo">Importer</button><span id="impMsg" style="font-size:12px;color:var(--mute)"></span></div>
+   </div>
+   <div class="card pad"><h3>📲 Installer sur iPhone et Mac</h3>
+    <ol><li><b>iPhone</b> : ouvre l'appli dans <b>Safari</b> → bouton <b>Partager</b> → <b>Sur l'écran d'accueil</b> → Ajouter.</li>
+    <li><b>Mac</b> (macOS 14 ou plus) : ouvre-la dans <b>Safari</b> → menu <b>Fichier</b> → <b>Ajouter au Dock</b>.</li>
+    <li><b>Mac avec Chrome</b> : menu ⋮ → <b>Caster, enregistrer et partager</b> → <b>Installer la page en tant qu'application</b>.</li></ol>
+    <p>Le mode d'emploi complet est dans le fichier README du projet.</p>
+   </div>
+   <div class="card pad"><h3>🎨 Apparence</h3><div class="row2"><button class="btn sm sec" id="thBtn2">Basculer clair / sombre</button></div><p>Raccourcis : <kbd>?</kbd> pour la liste, <kbd>⌘K</kbd> pour chercher.</p></div>
+   <div class="card pad"><h3>ℹ️ À propos</h3><p>Cap Six · plan de rattrapage PrEP du ${shortD(START)} au ${shortD(END)}. ${IN_CLAUDE?"Version Claude.":"Version installée."}</p></div>
+  </div>`;
+  const $=id=>document.getElementById(id);
+  if($("gOn"))$("gOn").onclick=async()=>{const t=$("gTok").value;if(!t.trim()){$("gMsg").textContent="Colle d'abord ton token.";return;}$("gMsg").textContent="Connexion…";try{const k=await gistConnect(t);toast(k==="existing"?"✓ Progression retrouvée sur GitHub":"✓ Synchro activée");initSyncTimers();renderSet();}catch(e){CFG.gistToken="";$("gMsg").textContent=e.message||"Erreur";}};
+  if($("gSync"))$("gSync").onclick=()=>gistSync();
+  if($("gOff"))$("gOff").onclick=()=>{gistDisconnect();toast("Cet appareil n'est plus synchronisé");renderSet();};
+  $("askCopy").onclick=async()=>{try{await navigator.clipboard.writeText(claudePrompt($("askTxt").value));toast("✓ Copié : colle-le dans Claude");}catch(e){$("askTxt").value=claudePrompt($("askTxt").value);$("askTxt").select();toast("Sélectionné : copie avec ⌘C");}};
+  $("repoIn").onchange=e=>{CFG.repo=e.target.value.trim();saveCfg();};
+  $("expCopy").onclick=async()=>{const t=JSON.stringify(S);try{await navigator.clipboard.writeText(t);toast("✓ Progression copiée");}catch(e){$("impTxt").value=t;$("impTxt").select();toast("Sélectionné : copie avec ⌘C");}};
+  $("impGo").onclick=()=>{try{const o=JSON.parse($("impTxt").value);if(!o||typeof o!=="object"||!o.checks)throw 0;S=Object.assign(EMPTY(),o);save();renderAll();$("impMsg").textContent="✓ Importé";toast("✓ Progression importée");}catch(e){$("impMsg").textContent="Texte invalide.";}};
+  $("thBtn2").onclick=()=>document.getElementById("themeBtn").click();
+}
+let syncTimersOn=false;
+function initSyncTimers(){if(syncTimersOn)return;syncTimersOn=true;setInterval(()=>{if(document.visibilityState==="visible")gistSync();},60000);document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")gistSync();});}
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+let F=null,fInt=null;
+function findBlock(id){const ds=id.split("|")[0];return blocks(ds).find(b=>b.id===id);}
+function openFocus(id){
+  const b=findBlock(id);if(!b)return;
+  const total=Math.min(b.dur||50,240)*60;
+  F={id,b,total,left:total,run:false,end:0,acc:0};
+  drawFocus();document.getElementById("focus").classList.add("on");
+}
+function drawFocus(){
+  const {b,left,total,run}=F,p=1-left/total,r=130,c=2*Math.PI*r,col=getComputedStyle(document.body).getPropertyValue("--"+b.s)||"#fff";
+  const mm=String(Math.floor(left/60)).padStart(2,"0"),ss=String(Math.floor(left%60)).padStart(2,"0");
+  document.getElementById("focus").innerHTML=`<div class="fbox"><div class="lab">${SUBJ[b.s][0]} · ${TYPES[b.ty]||""} · ${b.t}</div><h2>${esc(b.title)}</h2>
+  <div class="fring"><svg width="280" height="280"><circle cx="140" cy="140" r="${r}" fill="none" stroke="var(--panel2)" stroke-width="10"/><circle id="farc" cx="140" cy="140" r="${r}" fill="none" stroke="${col}" stroke-width="10" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-p)}" transform="rotate(-90 140 140)"/></svg><div class="ftime" id="ftime">${mm}:${ss}</div></div>
+  ${b.steps.length?`<ul class="fsteps">${b.steps.map((x,i)=>`<li><input type="checkbox" class="mini" style="--c:${col}" data-step="${b.id}#${i}" ${S.steps[b.id+'#'+i]?'checked':''}><span>${esc(x)}</span></li>`).join("")}</ul>`:""}
+  <div class="fctl"><button class="main" id="fplay">${run?"❚❚ Pause":"▶ Démarrer"}</button><button id="fplus">+5 min</button><button id="fdone">✓ Bloc terminé</button><button id="fclose">Fermer</button></div>
+  <div style="margin-top:14px;font-size:12px;color:var(--mute)">Astuce : toutes les 50 min, 10 min de pause loin de l'écran.</div></div>`;
+}
+function tickFocus(){
+  if(!F||!F.run)return;
+  const left=Math.max(0,(F.end-Date.now())/1000);F.left=left;
+  const r=130,c=2*Math.PI*r,arc=document.getElementById("farc"),tm=document.getElementById("ftime");
+  if(arc)arc.setAttribute("stroke-dashoffset",c*(left/F.total));
+  const mm=String(Math.floor(left/60)).padStart(2,"0"),ss=String(Math.floor(left%60)).padStart(2,"0");
+  if(tm)tm.textContent=mm+":"+ss;document.title=mm+":"+ss+" · "+F.b.title;
+  if(left<=0){F.run=false;clearInterval(fInt);logFocus();beep();toast("⏰ Temps écoulé · coche le bloc s'il est fini");drawFocus();document.title="Cap Six — plan de rattrapage PrEP";}
+}
+function logFocus(){if(!F)return;const spent=Math.round((F.total-F.left)/60)-F.acc;if(spent>0){const k=F.id.split("|")[0]+"|"+F.b.s;S.focus[k]=(S.focus[k]||0)+spent;F.acc+=spent;save();}}
+function beep(){try{const a=new (window.AudioContext||window.webkitAudioContext)();[0,.25,.5].forEach(t=>{const o=a.createOscillator(),g=a.createGain();o.frequency.value=880;o.connect(g);g.connect(a.destination);g.gain.setValueAtTime(.15,a.currentTime+t);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+t+.2);o.start(a.currentTime+t);o.stop(a.currentTime+t+.22);});}catch(e){}}
+document.getElementById("focus").addEventListener("click",e=>{
+  if(!F)return;
+  if(e.target.id==="fplay"){if(F.run){F.run=false;clearInterval(fInt);logFocus();}else{F.run=true;F.end=Date.now()+F.left*1000;fInt=setInterval(tickFocus,250);}drawFocus();}
+  if(e.target.id==="fplus"){F.total+=300;F.left+=300;if(F.run)F.end+=300000;drawFocus();}
+  if(e.target.id==="fdone"){logFocus();setCheck(F.id,true);closeFocus();}
+  if(e.target.id==="fclose")closeFocus();
+});
+function closeFocus(){if(F&&F.run)logFocus();clearInterval(fInt);F=null;document.getElementById("focus").classList.remove("on");document.title="Cap Six — plan de rattrapage PrEP";render(view);}
+
+/* =========================================================
+   INTERACTIONS
+   ========================================================= */
+function toast(msg){const t=document.createElement("div");t.className="toast";t.textContent=msg;document.getElementById("toasts").appendChild(t);setTimeout(()=>{t.style.transition="opacity .3s";t.style.opacity=0;setTimeout(()=>t.remove(),300);},2200);}
+function setCheck(id,val){
+  const ds=id.split("|")[0],before=dayStats(ds).p;
+  if(val)S.checks[id]=true;else delete S.checks[id];save();
+  const st=dayStats(ds);
+  if(val){if(st.p===1&&before<1){confetti();toast("🎉 Journée bouclée à 100 %");}else toast(`✓ ${Math.round(st.p*100)} % de la journée`);}
+  render(view);
+}
+document.addEventListener("click",e=>{
+  const el=e.target;
+  if(el.dataset.tick&&el.tagName!=="INPUT"){setCheck(el.dataset.tick,!S.checks[el.dataset.tick]);return;}
+  const f=el.closest("[data-focus]");if(f){openFocus(f.dataset.focus);return;}
+  const nv=el.closest("[data-nav]");if(nv){const n=+nv.dataset.nav;if(n===0){cur=today();if(cur<START)cur=START;if(cur>END)cur=END;}else{const i=Math.max(0,Math.min(DAYS.length-1,DAYS.indexOf(cur)+n));cur=DAYS[i];}openBlocks.clear();renderToday();return;}
+  const op=el.closest("[data-open]");if(op&&!el.matches("input")){const id=op.dataset.open;openBlocks.has(id)?openBlocks.delete(id):openBlocks.add(id);op.closest(".bcard").classList.toggle("open");return;}
+  const w=el.closest("[data-wk]");if(w){wk=w.dataset.wk;renderPlan();return;}
+  const dd=el.closest("[data-day]");if(dd){cur=dd.dataset.day;go("today");return;}
+  const jp=el.closest("[data-jump]");if(jp&&!el.matches("input")){const id=jp.dataset.jump;cur=id.split("|")[0];openBlocks.add(id);go("today");setTimeout(()=>{const n=document.getElementById("b-"+cssId(id));if(n)n.scrollIntoView({behavior:"smooth",block:"center"});},60);return;}
+  const rs=el.closest("[data-rstep]");if(rs){const[id,n]=rs.dataset.rstep.split("|");const r=READS.find(x=>x.id===id);S.pages[id]=Math.max(r.start,Math.min(rEnd(r),+(S.pages[id]??r.start)+ +n));save();renderRead();return;}
+});
+document.addEventListener("change",e=>{
+  const el=e.target;
+  if(el.dataset.tick){setCheck(el.dataset.tick,el.checked);return;}
+  if(el.dataset.step){if(el.checked)S.steps[el.dataset.step]=true;else delete S.steps[el.dataset.step];save();const li=el.closest("li");if(li)li.classList.toggle("done",el.checked);if(!F)render(view);return;}
+  if(el.dataset.item){if(el.checked)S.items[el.dataset.item]=true;else delete S.items[el.dataset.item];save();renderSubj();return;}
+  if(el.dataset.dl){if(el.checked)S.dl[el.dataset.dl]=true;else delete S.dl[el.dataset.dl];save();renderDl();return;}
+  if(el.dataset.read){const r=READS.find(x=>x.id===el.dataset.read);S.pages[r.id]=Math.max(r.start,Math.min(rEnd(r),+el.value));save();renderRead();return;}
+  if(el.dataset.rend){S.pages[el.dataset.rend+"_end"]=Math.max(1,+el.value);save();renderRead();return;}
+});
+document.addEventListener("input",e=>{
+  if(e.target.id==="note"){S.notes[cur]=e.target.value;clearTimeout(window._nt);window._nt=setTimeout(save,600);}
+  if(e.target.type==="range"&&e.target.dataset.read){const card=e.target.closest(".rd");const b=card.querySelector(".nums b");if(b)b.textContent=e.target.value;}
+});
+document.addEventListener("keydown",e=>{
+  if(e.target.matches("input,textarea"))return;
+  if(e.key==="Escape"){if(F)closeFocus();document.getElementById("help").classList.remove("on");return;}
+  if(F)return;
+  if(e.key==="?"){document.getElementById("help").classList.toggle("on");return;}
+  if(/^[1-9]$/.test(e.key)){go(VIEWS[+e.key-1][0]);return;}
+  if(view!=="today")return;
+  if(e.key==="ArrowLeft"||e.key==="ArrowRight"){const i=Math.max(0,Math.min(DAYS.length-1,DAYS.indexOf(cur)+(e.key==="ArrowLeft"?-1:1)));cur=DAYS[i];openBlocks.clear();renderToday();}
+  if(e.key.toLowerCase()==="t"){cur=today();if(cur<START)cur=START;if(cur>END)cur=END;renderToday();}
+  const cb=currentBlock(cur),tg=cb&&(cb.now||cb.next)||blocks(cur).find(b=>b.chk&&!S.checks[b.id]);
+  if(e.key.toLowerCase()==="f"&&tg){openFocus(tg.id);}
+  if(e.key===" "&&tg){e.preventDefault();setCheck(tg.id,!S.checks[tg.id]);}
+});
+document.getElementById("themeBtn").onclick=()=>{document.body.classList.toggle("dark");try{localStorage.setItem("prep-theme2",document.body.classList.contains("dark")?"dark":"light")}catch(e){}};
+try{if(localStorage.getItem("prep-theme2")==="dark")document.body.classList.add("dark");}catch(e){}
+document.getElementById("helpBtn").onclick=()=>document.getElementById("help").classList.add("on");
+
+/* Palette de recherche */
+let palSel=0,palList=[];
+const norm=t=>t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+function openPal(){document.getElementById("pal").classList.add("on");const i=document.getElementById("palIn");i.value="";palFill("");setTimeout(()=>i.focus(),10);}
+function closePal(){document.getElementById("pal").classList.remove("on");}
+function palFill(q){
+  const nq=norm(q.trim()),out=[];
+  DAYS.forEach(d=>blocks(d).forEach(b=>{if(!b.chk)return;const hay=norm(b.title+" "+b.title.replace(/\bS(\d+)\b/g,"serie $1")+" "+SUBJ[b.s][0]+" "+TYPES[b.ty]+" "+shortD(d)+" "+b.steps.join(" "));if(!nq||nq.split(/\s+/).every(w=>hay.includes(w)))out.push(b);}));
+  if(nq){const ws=nq.split(/\s+/),tm=b=>{const t=norm(b.title+" "+b.title.replace(/\bS(\d+)\b/g,"serie $1"));return ws.every(w=>new RegExp("(^|[^0-9a-z])"+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"($|[^0-9a-z])").test(t))?0:1;};out.sort((x,y)=>tm(x)-tm(y));}
+  palList=(nq?out:out.filter(b=>b.id.split("|")[0]>=today())).slice(0,40);palSel=0;
+  document.getElementById("palRes").innerHTML=palList.length?palList.map((b,i)=>`<div class="row ${i===0?'sel':''}" data-pi="${i}"><span class="d">${shortD(b.id.split("|")[0])}</span><span><span class="tchip" style="--c:${SUBJ[b.s][1]}">${SUBJ[b.s][0]}</span> ${esc(b.title)}</span><span>${S.checks[b.id]?"✓":""}</span></div>`).join(""):`<div style="padding:16px;color:var(--mute)">Aucun bloc trouvé.</div>`;
+}
+function palGo(i){const b=palList[i];if(!b)return;closePal();cur=b.id.split("|")[0];openBlocks.add(b.id);go("today");setTimeout(()=>{const n=document.getElementById("b-"+cssId(b.id));if(n)n.scrollIntoView({behavior:"smooth",block:"center"});},60);}
+document.getElementById("palBtn").onclick=openPal;
+document.getElementById("palIn").addEventListener("input",e=>palFill(e.target.value));
+document.getElementById("palIn").addEventListener("keydown",e=>{
+  const rows=document.querySelectorAll("#palRes .row");
+  if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();palSel=Math.max(0,Math.min(rows.length-1,palSel+(e.key==="ArrowDown"?1:-1)));rows.forEach((r,i)=>r.classList.toggle("sel",i===palSel));if(rows[palSel])rows[palSel].scrollIntoView({block:"nearest"});}
+  if(e.key==="Enter"){palGo(palSel);}
+  if(e.key==="Escape"){closePal();}
+});
+document.getElementById("palRes").addEventListener("click",e=>{const r=e.target.closest("[data-pi]");if(r)palGo(+r.dataset.pi);});
+document.getElementById("pal").addEventListener("click",e=>{if(e.target.id==="pal")closePal();});
+document.addEventListener("keydown",e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();openPal();}},true);
+
+/* Confetti */
+function confetti(){
+  const cv=document.getElementById("confetti"),ctx=cv.getContext("2d");cv.width=innerWidth;cv.height=innerHeight;
+  const cols=["#5b8cff","#ff6b5b","#f5b83d","#3ecf8e","#b07cff"];
+  const ps=Array.from({length:160},()=>({x:innerWidth/2,y:innerHeight/3,vx:(Math.random()-.5)*14,vy:Math.random()*-12-4,r:Math.random()*6+3,c:cols[Math.floor(Math.random()*5)],a:Math.random()*6}));
+  let f=0;(function loop(){ctx.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.vy+=.35;p.x+=p.vx;p.y+=p.vy;p.a+=.2;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.a);ctx.fillStyle=p.c;ctx.fillRect(-p.r/2,-p.r/4,p.r,p.r/2);ctx.restore();});if(++f<110)requestAnimationFrame(loop);else ctx.clearRect(0,0,cv.width,cv.height);})();
+}
+
+/* =========================================================
+   RENDU
+   ========================================================= */
+function render(v){({today:renderToday,plan:renderPlan,cal:renderCal,subj:renderSubj,read:renderRead,dl:renderDl,stats:renderStats,meth:renderMeth,set:renderSet})[v]();}
+function renderAll(){render(view);}
+render("today");
+setInterval(()=>{if(view==="today"&&!F&&cur===today()&&!document.activeElement.matches("textarea"))renderToday();},60000);
+initSync();
+if(!IN_CLAUDE&&"serviceWorker" in navigator&&location.protocol==="https:"){navigator.serviceWorker.register("sw.js").catch(()=>{});}
+</script>
+</body>
+</html>
